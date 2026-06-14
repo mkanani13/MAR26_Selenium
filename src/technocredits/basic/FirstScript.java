@@ -1,4 +1,4 @@
-package basic;
+package technocredits.basic;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

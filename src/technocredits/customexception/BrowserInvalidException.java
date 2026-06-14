@@ -1,4 +1,4 @@
-package customexception;
+package technocredits.customexception;
 
 public class BrowserInvalidException extends RuntimeException{
 	

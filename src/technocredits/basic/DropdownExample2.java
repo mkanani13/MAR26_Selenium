@@ -1,4 +1,4 @@
-package basic;
+package technocredits.basic;
 
 import java.time.Duration;
 import java.util.List;
