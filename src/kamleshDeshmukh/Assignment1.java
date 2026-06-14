@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import technocredits.base.BrowserActions;
 
-public class Assignment1 extends BrowserActions {
+public class Assignment1  {
 
     WebDriver driver;
 
