@@ -5,9 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class Assignment_2 {
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+     void main() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -29,11 +32,7 @@ public class Assignment_2 {
        Thread.sleep(1000);
        String actualMsg = alt.getText();
        String expMassage ="Success!";
-       if(actualMsg.equals(expMassage)) {
-           System.out.println("Pass");
-       } else {
-           System.out.println("Fail");
-       }
+       Assert.assertEquals(expMassage,actualMsg);
        alt.accept();
         password.clear();
         System.out.println("Step-entering password");
@@ -44,11 +43,7 @@ public class Assignment_2 {
         Thread.sleep(1000);
         String actualMsg1 = alt.getText();
         String expMassage1 ="Failed! please enter strong password";
-        if(actualMsg1.equals(expMassage1)) {
-            System.out.println("Pass");
-        } else {
-            System.out.println("Fail");
-        }
+        Assert.assertEquals(expMassage1,actualMsg1);
         alt.accept();
        driver.quit();
     }

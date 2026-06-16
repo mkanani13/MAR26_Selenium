@@ -5,12 +5,15 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class Assignment_8 {
 
-    public static void main(String[] args) {
+    @Test
+    void main()  {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -24,15 +27,8 @@ public class Assignment_8 {
         js.executeScript("arguments[0].scrollIntoView(true)", checkBox);
         redioButt_2.click();
         redioButt_1.click();
-        if (redioButt_1.isSelected()) {
-            if (!redioButt_2.isSelected()) {
-                System.out.println("Pass - redio button one is clicked and redio button 2 is not clicked");
-            } else {
-                System.out.println("Fial - redio button one is clicked and redio button 2 is also clicked");
-            }
-        } else if (redioButt_2.isSelected()) {
-            System.out.println("Pass - redio button one is not clicked and redio button 2 is clicked");
-        }
+        Assert.assertTrue(redioButt_1.isSelected());
+        Assert.assertTrue(!redioButt_2.isSelected());
         driver.quit();
     }
 

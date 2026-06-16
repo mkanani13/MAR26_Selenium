@@ -5,12 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
 public class Assignment_10 {
-     public static void main(String[] args) throws InterruptedException {
+    @Test
+    void main()  {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -21,16 +24,15 @@ public class Assignment_10 {
         //JavascriptExecutor js = (JavascriptExecutor) driver;
        // js.executeScript("arguments[0].scrollIntoView(true)", checkBox);
         WebElement checkbox_1 = driver.findElement(By.xpath("//input[@id ='inlineCheckbox1']"));
-        Thread.sleep(2000);
         WebElement listDropDown = driver.findElement(By.xpath("//select[@class='form-control m-bot15']"));
         Select s = new Select(listDropDown);
         int num = s.getOptions().size();
+        Assert.assertEquals(num,5);
         List<WebElement> list =s.getOptions();
         for(WebElement e:list) {
             System.out.println(e.getText());
         }
         s.selectByIndex(num-1);
-        Thread.sleep(2000);
         driver.quit();
     }
 }

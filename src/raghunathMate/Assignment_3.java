@@ -4,9 +4,12 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class Assignment_3 {
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+     void main() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -25,11 +28,7 @@ public class Assignment_3 {
         String expMsg = firstName+" and "+lastName+" and "+compName;
         Alert alt = driver.switchTo().alert();
         String actualMsg = alt.getText();
-        if(actualMsg.equals(expMsg)) {
-            System.out.println("Pass");
-        } else {
-            System.out.println("Fail");
-        }
+        Assert.assertEquals(expMsg,actualMsg);
         alt.accept();
         driver.quit();
     }

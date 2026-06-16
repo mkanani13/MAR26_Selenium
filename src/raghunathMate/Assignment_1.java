@@ -3,9 +3,11 @@ package raghunathMate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 
 public class Assignment_1 {
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+     void main() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();

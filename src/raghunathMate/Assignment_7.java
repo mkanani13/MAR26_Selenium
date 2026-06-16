@@ -5,11 +5,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class Assignment_7 {
-    public static void main(String[] args) {
+    @Test
+    void main()  {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -20,11 +23,7 @@ public class Assignment_7 {
         JavascriptExecutor js  = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].scrollIntoView(true)",checkBox);
         checkBox.click();
-        if(checkBox.isSelected()) {
-            System.out.println("Given check box has been clicked");
-        } else {
-            System.out.println("Given check box has not clicked");
-        }
+        Assert.assertTrue(checkBox.isSelected());
         driver.quit();
     }
 }
