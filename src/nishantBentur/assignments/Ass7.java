@@ -12,7 +12,7 @@ public class Ass7 {
     WebDriver driver;
 
     @Test
-    void checkbox(){
+    public void checkbox(){
         driver = BrowserActions.start();
 
         System.out.println("Navigate to Basic Elements tab");

@@ -12,7 +12,7 @@ public class Ass3 {
     WebDriver driver;
 
     @Test
-    void aa_basicElementsAlert(){
+    public void aa_basicElementsAlert(){
         driver = BrowserActions.start();
 
         System.out.println("Navigate to Basic Elements tab");

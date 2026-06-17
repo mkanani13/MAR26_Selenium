@@ -12,7 +12,7 @@ public class Ass6 {
     WebDriver driver;
 
     @Test
-    void aa_alertWithPromptAccept(){
+    public void aa_alertWithPromptAccept(){
         driver = BrowserActions.start();
 
         System.out.println("Navigate to Basic Elements tab");
@@ -32,7 +32,7 @@ public class Ass6 {
     }
 
     @Test
-    void ab_alertWithPromptDismiss(){
+    public void ab_alertWithPromptDismiss(){
         System.out.println("Click on Javascript Prompt in DIFFERENT EXAMPLES OF ALERT again");
         driver.findElement(By.xpath("//button[@id='javascriptPromp']")).click();   //Click 'javascript Prompt'
         Alert alert = driver.switchTo().alert();

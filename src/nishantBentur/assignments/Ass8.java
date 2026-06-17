@@ -12,7 +12,7 @@ public class Ass8 {
     WebDriver driver;
 
     @Test
-    void radioButton(){
+    public void radioButton(){
         driver = BrowserActions.start();
 
         System.out.println("Navigate to Basic Elements tab");

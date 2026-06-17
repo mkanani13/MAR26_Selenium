@@ -14,7 +14,7 @@ public class Ass10 {
     WebDriver driver;
 
     @Test
-    void singleDropDown(){
+    public void singleDropDown(){
         driver = BrowserActions.start();
 
         System.out.println("Navigate to Basic Elements tab");

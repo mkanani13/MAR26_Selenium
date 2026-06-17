@@ -13,7 +13,7 @@ public class Ass2 {
     WebDriver driver;
 
     @Test
-    void aa_invalidPasswordCheck() {
+    public void aa_invalidPasswordCheck() {
         driver = BrowserActions.start();
 
         System.out.println("STEP- Navigate to Registration tab");
@@ -33,7 +33,7 @@ public class Ass2 {
     }
 
     @Test
-    void ab_validPasswordCheck(){
+    public void ab_validPasswordCheck(){
         System.out.println("STEP- Enter user credentials again");
         WebElement password = driver.findElement(By.id("pwdSignin"));
         password.clear();
