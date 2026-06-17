@@ -22,19 +22,20 @@ public class Assignment_6 {
         promptAlertButton.click();
         Thread.sleep(1000);
         String name = "Raghunath";
+        String cancelMsg = "User cancelled the prompt.";
         Alert alt = driver.switchTo().alert();
         alt.sendKeys(name);
         Thread.sleep(3000);
         alt.accept();
         String actualmsg = driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText();
-       Assert.assertEquals(name,actualmsg);
+        Assert.assertTrue(actualmsg.contains(name));
         Thread.sleep(3000);
         promptAlertButton.click();
         alt.sendKeys(name);
         Thread.sleep(3000);
         alt.dismiss();
         actualmsg = driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText();
-        Assert.assertEquals(name,actualmsg);
+        Assert.assertTrue(actualmsg.contains(cancelMsg));
         Thread.sleep(1000);
         driver.quit();
     }
