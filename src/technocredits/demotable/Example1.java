@@ -1,4 +1,4 @@
-package demotable;
+package technocredits.demotable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import base.BrowserActions;
+import technocredits.base.BrowserActions;
 import org.testng.annotations.Test;
 
 // Selenium ni jar add na karvi padi ? kayu ?

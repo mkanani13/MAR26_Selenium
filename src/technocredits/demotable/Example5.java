@@ -1,6 +1,6 @@
-package demotable;
+package technocredits.demotable;
 
-import base.BrowserActions;
+import technocredits.base.BrowserActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

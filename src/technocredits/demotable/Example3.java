@@ -1,4 +1,4 @@
-package demotable;
+package technocredits.demotable;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -6,7 +6,7 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import base.BrowserActions;
+import technocredits.base.BrowserActions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

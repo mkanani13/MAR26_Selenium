@@ -1,4 +1,4 @@
-package demotable;
+package technocredits.demotable;
 
 import org.testng.annotations.Test;
 
