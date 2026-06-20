@@ -1,4 +1,4 @@
-package technocredits.base;
+package technocredits.technoapp.base;
 
 import java.time.Duration;
 
@@ -9,7 +9,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import technocredits.customexception.BrowserInvalidException;
 
 public class BrowserActions {
-	
+    protected static WebDriver driver = null;
+
 	public static WebDriver start() {
 
         return start("CHROME", "http://automationbykrishna.com");
@@ -22,8 +23,6 @@ public class BrowserActions {
 	
 	public static WebDriver start(String browser, String url) {
 		System.out.println("STEP - Launch browser & hit url");
-		WebDriver driver = null;
-		
 		switch(browser.toUpperCase()) {
 		 case "CHROME" :
 			 driver = new ChromeDriver();
@@ -42,4 +41,8 @@ public class BrowserActions {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver; 
 	}
+
+    public static void quitBrowser(){
+        driver.close();
+    }
 }
