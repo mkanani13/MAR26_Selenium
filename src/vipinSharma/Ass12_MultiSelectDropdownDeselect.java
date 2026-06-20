@@ -1,0 +1,76 @@
+//Using Selenium WebDriver in Java, automate the following scenario:
+//
+//Open the website http://automationbykrishna.com/.
+//Click on the "Basic Elements" tab to navigate to the corresponding section.
+//Scroll down to the Multi-Select dropdown.
+//Select the options '2' and '5' from the dropdown.
+//Fetch and print all currently selected options in the Console.
+//Deselect the option '5' from the dropdown.
+//Fetch and print the updated list of selected options in the Console after deselection.
+
+package automationScritps;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.util.List;
+
+public class Ass12_MultiSelectDropdownDeselect {
+    WebDriver driver;
+    Alert alert;
+
+    @BeforeTest
+    public void setUp() {
+        System.out.println("STEP - WebDriver Initializing and Browser Launched");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        System.out.println("STEP - URL Navigation");
+        driver.get("http://automationbykrishna.com/");
+        System.out.println("STEP - Page Verification after redirect");
+        String actualPageTitle = driver.getTitle();
+        String expectedPageTitle = "Login Signup Demo";
+        Assert.assertEquals(actualPageTitle, expectedPageTitle, "Page title not match!");
+        System.out.println("STEP - Basic Elements link click");
+        driver.findElement(By.id("basicelements")).click();
+    }
+
+    @AfterTest
+    public void setupEnd() {
+        driver.quit();
+        System.out.println("Browser closed");
+    }
+
+    @Test
+    public void multiSelectDrp() throws InterruptedException {
+
+        WebElement mulDropdown = driver.findElement(By.xpath("//div[@class='form-group']//select[2]"));
+        System.out.println("STEP- Element Scroll");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", mulDropdown);
+
+        Select sl= new Select(mulDropdown);
+        System.out.println("STEP - Verify dropdown is multiple");
+        boolean actualDrIsISMultiple = sl.isMultiple();
+        boolean expectedDrpIsMultiple = true;
+        Assert.assertEquals(actualDrIsISMultiple, expectedDrpIsMultiple, "Dropdown is not mul-selected");
+        System.out.println("STEP - Dropdown option selection");
+        sl.selectByVisibleText("2");
+        sl.selectByVisibleText("5");
+        List<WebElement> selectedOption = sl.getAllSelectedOptions();
+        for (WebElement optionList: selectedOption){
+            System.out.println("Selected options are : " + optionList.getText());
+        }
+
+        System.out.println("STEP -  Dropdown option deselection");
+        sl.deselectByVisibleText("5");
+        List<WebElement> selectedOptionAfterDeselect = sl.getAllSelectedOptions();
+        for (WebElement optionList: selectedOptionAfterDeselect){
+            System.out.println("Selected options after deselect : " + optionList.getText());
+        }
+    }
+}
