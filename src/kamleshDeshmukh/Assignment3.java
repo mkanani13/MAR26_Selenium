@@ -2,7 +2,7 @@
 
 package kamleshDeshmukh;
 
-import technocredits.base.BrowserActions;
+import kamleshDeshmukh.base.BrowserActions;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
