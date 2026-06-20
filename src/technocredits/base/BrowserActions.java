@@ -11,11 +11,13 @@ import technocredits.customexception.BrowserInvalidException;
 public class BrowserActions {
 	
 	public static WebDriver start() {
-		return start("CHROME", "http://automationbykrishna.com");
+
+        return start("CHROME", "http://automationbykrishna.com");
 	}
 	
 	public static WebDriver start(String url) {
-		return start("CHROME", url);
+
+        return start("CHROME", url);
 	}
 	
 	public static WebDriver start(String browser, String url) {
