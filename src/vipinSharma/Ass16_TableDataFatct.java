@@ -8,7 +8,7 @@
 //From the same row, retrieve the corresponding value from the "First Name" column.
 //Print the extracted First Name value in the Console.
 
-package automationScritps;
+package vipinSharma;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

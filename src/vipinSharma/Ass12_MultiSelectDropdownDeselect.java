@@ -8,7 +8,7 @@
 //Deselect the option '5' from the dropdown.
 //Fetch and print the updated list of selected options in the Console after deselection.
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

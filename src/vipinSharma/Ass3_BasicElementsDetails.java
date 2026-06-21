@@ -9,7 +9,7 @@
 //Click on the Submit button.
 //Alert message should pop-up "FirstName and LastName and CompanyName"
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
