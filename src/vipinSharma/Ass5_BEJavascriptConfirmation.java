@@ -9,7 +9,7 @@
 //       "You pressed OK!"
 
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

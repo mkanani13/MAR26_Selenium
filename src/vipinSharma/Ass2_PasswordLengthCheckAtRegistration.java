@@ -14,7 +14,7 @@
 // Click on the Submit button (Green Tick icon) to complete registration.
 // Alert message should pop-up "Success!"
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

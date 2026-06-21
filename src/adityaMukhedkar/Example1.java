@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import technocredits.base.BrowserActions;
+import technocredits.technoapp.base.BrowserActions;
 
 import java.util.ArrayList;
 import java.util.List;
