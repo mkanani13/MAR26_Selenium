@@ -15,9 +15,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class Assignment10 {
-
+        @Test
         public  void selectoption3() throws InterruptedException {
             System.out.println("Launch Browser");
             WebDriver driver = new ChromeDriver();

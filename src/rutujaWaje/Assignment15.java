@@ -38,7 +38,7 @@ public class Assignment15 {
 
             for (WebElement row : rows) {
                 List<WebElement> columns = row.findElements(By.tagName("td"));
-                System.out.println("Get the First Name");
+
                 String firstName = columns.get(1).getText();
                 if (firstName.equalsIgnoreCase("Priya")) {
                     System.out.println("Get the UserName");

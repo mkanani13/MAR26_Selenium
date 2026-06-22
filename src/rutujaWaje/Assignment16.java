@@ -34,7 +34,7 @@ public class Assignment16 {
 
             System.out.println("get the Employee basic information");
             List<WebElement> empBasicInfo = driver.findElements(By.xpath("//table[@id='table1']/tbody/tr"));
-            String actualFirstName = "";
+            String actualFirstName = "Abhishek";
             boolean isUserFound = false;
 
             for (WebElement e : empBasicInfo) {

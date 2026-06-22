@@ -29,7 +29,7 @@ import org.testng.annotations.Test;
 
 public class Assignment2 {
     @Test
-    public void Alertmessage() throws InterruptedException{
+    public void alertmessage() throws InterruptedException{
         WebDriver driver = new ChromeDriver();
         driver.get("http://automationbykrishna.com/");
         driver.manage().window().maximize();
@@ -54,6 +54,7 @@ public class Assignment2 {
         Alert alert = driver.switchTo().alert();
         String alertText = alert.getText();
         Assert.assertEquals(alertText,"Failed! please enter strong password");
+        alert.accept();
         password.clear();
         password.sendKeys("Rutu@26111997");
         System.out.println("Click on submit button");
@@ -62,8 +63,8 @@ public class Assignment2 {
         System.out.println("Get the alert message and checking positive scenario");
         Alert alertBox = driver.switchTo().alert();
         String alertMessage = alertBox.getText();
-        Assert.assertEquals(alertMessage,"Success");
-        alert.accept();
+        Assert.assertEquals(alertMessage,"Success!");
+        alertBox.accept();
     }
 }
 
