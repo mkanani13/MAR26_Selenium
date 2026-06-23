@@ -1,14 +1,13 @@
-package technocredits.demotable;
-
-import java.util.ArrayList;
-import java.util.List;
+package adityaMukhedkar;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import technocredits.technoapp.base.BrowserActions;
 import org.testng.annotations.Test;
+import technocredits.technoapp.base.BrowserActions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // Selenium ni jar add na karvi padi ? kayu ?
 // testng nu kevu

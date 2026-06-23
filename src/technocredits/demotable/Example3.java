@@ -6,7 +6,7 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import technocredits.base.BrowserActions;
+import technocredits.technoapp.base.BrowserActions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
