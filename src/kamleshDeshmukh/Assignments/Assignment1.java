@@ -1,4 +1,4 @@
-package kamleshDeshmukh;
+package kamleshDeshmukh.Assignments;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -9,12 +9,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import kamleshDeshmukh.base.BrowserActions;
 
-public class Assignment1  {
+public class Assignment1 {
 
     WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
+
         driver = BrowserActions.start();
     }
 
