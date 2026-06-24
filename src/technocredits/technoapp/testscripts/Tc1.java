@@ -62,6 +62,7 @@ public class Tc1 {
 
     @AfterMethod
     public void tearDown(){
+
         BrowserActions.quitBrowser();
     }
 }

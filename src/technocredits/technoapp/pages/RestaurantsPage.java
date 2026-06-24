@@ -52,6 +52,7 @@ public class RestaurantsPage extends BrowserActions {
     }
 
     public void clickOnDismiss(){
+
         driver.findElement(By.xpath("//button[@id='docs-banner-dismiss']")).click();
     }
 

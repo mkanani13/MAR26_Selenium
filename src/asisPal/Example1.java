@@ -7,8 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+<<<<<<< HEAD
 import technocredits.technoapp.base.BrowserActions;
+=======
+>>>>>>> a924e2d743438fc5b7d3f319e0f611eec0da25c7
 import org.testng.annotations.Test;
+import technocredits.technoapp.base.BrowserActions;
 
 // Selenium ni jar add na karvi padi ? kayu ?
 // testng nu kevu

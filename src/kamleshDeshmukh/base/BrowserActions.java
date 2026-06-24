@@ -1,24 +1,21 @@
-package technocredits.technoapp.base;
-
-import java.time.Duration;
+package kamleshDeshmukh.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-
 import technocredits.customexception.BrowserInvalidException;
+
+import java.time.Duration;
 
 public class BrowserActions {
     protected static WebDriver driver = null;
 
 	public static WebDriver start() {
-
-        return start("CHROME", "http://automationbykrishna.com");
+		return start("CHROME", "http://automationbykrishna.com");
 	}
 	
 	public static WebDriver start(String url) {
-
-        return start("CHROME", url);
+		return start("CHROME", url);
 	}
 	
 	public static WebDriver start(String browser, String url) {
@@ -43,7 +40,6 @@ public class BrowserActions {
 	}
 
     public static void quitBrowser(){
-
         driver.close();
     }
 }
