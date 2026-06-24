@@ -6,10 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import technocredits.customexception.BrowserInvalidException;
 
 public class BrowserActions {
     protected static WebDriver driver = null;
+    protected static WebDriverWait wait;
 
 	public static WebDriver start() {
 
@@ -38,7 +40,8 @@ public class BrowserActions {
 		
 		driver.get(url);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver; 
 	}
 
