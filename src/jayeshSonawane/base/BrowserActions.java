@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public class BrowserActions {
 
-    static WebDriver driver = null;
+    protected static WebDriver driver = null;
 
     public static WebDriver start(){
         return start("chrome", "http://automationbykrishna.com/");
@@ -34,7 +34,7 @@ public class BrowserActions {
 
         driver.get(url);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Removed implicit wait. Use explicit wait wherever possible.
         return driver;
     }
 
