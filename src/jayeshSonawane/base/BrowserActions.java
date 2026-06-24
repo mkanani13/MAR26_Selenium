@@ -32,8 +32,9 @@ public class BrowserActions {
                 throw new BrowserInvalidException("Invalid Browser or Browser Not Supported");
         }
 
-        driver.get(url);
         driver.manage().window().maximize();
+        driver.get(url);
+
         // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Removed implicit wait. Use explicit wait wherever possible.
         return driver;
     }
