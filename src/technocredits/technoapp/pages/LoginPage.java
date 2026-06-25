@@ -18,7 +18,7 @@ public class LoginPage extends BrowserActions {
         driver.findElement(By.xpath("//button[text()= 'Continue']")).click();
 
         System.out.println("STEP - Click on Sign In Food link");
-        WebElement signInFoodElement  = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Sign in to Food')]")));
+        WebElement signInFoodElement  = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Enter Food app')]")));
         signInFoodElement.click();
 
         System.out.println("STEP - Click on AutoFill & SignIn as customer");
