@@ -3,6 +3,7 @@ package jayeshSonawane.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import technocredits.customexception.BrowserInvalidException;
 
 import java.time.Duration;
@@ -11,6 +12,7 @@ import java.util.Locale;
 public class BrowserActions {
 
     protected static WebDriver driver = null;
+    protected static WebDriverWait wait = null;
 
     public static WebDriver start(){
         return start("chrome", "http://automationbykrishna.com/");
@@ -34,6 +36,7 @@ public class BrowserActions {
 
         driver.manage().window().maximize();
         driver.get(url);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Removed implicit wait. Use explicit wait wherever possible.
         return driver;
