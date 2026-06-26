@@ -1,30 +1,29 @@
-package seleniumAssignments;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+package jayeshSonawane.assignments;
 /*
 Automate the following scenario using Selenium WebDriver in Java:
 
 Open the application: http://automationbykrishna.com/
 Click on the “Basic Elements” tab/button.
 
-Scroll down the page and in the "Inline checkboxes" section perform the following activities:-
+Scroll down the page and in the "Selects" section dropdown perform the following activities:-
 
-Select the checkbox with number '1'
+Select the option with number '3' from the dropdown
 
-Use the isSelected() method to confirm whether the intended checkbox is currently selected or not.
+Use the isSelected() method to confirm whether the intended dropdown option is currently selected or not
 
 Hint:- isSelected() method is used to check whether a selectable element is currently selected or not.
 isSelected() method returns a boolean value.
 if true, then selectable element is currently selected else not selected.
  */
-public class Assignment9_67 {
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignment10_68 {
 
     public static void main(String[] args) {
-
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://automationbykrishna.com/");
@@ -37,18 +36,17 @@ public class Assignment9_67 {
             throw new RuntimeException(e);
         }
 
-        WebElement elementInlineCheckbox1 = driver.findElement(By.xpath("//input[@id='inlineCheckbox1']"));
+        WebElement elementDropdown3 = driver.findElement(By.xpath("//select[@class='form-control m-bot15']/option[3]"));
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", elementInlineCheckbox1);
+        js.executeScript("arguments[0].scrollIntoView(true);", elementDropdown3);
 
-        elementInlineCheckbox1.click();
+        elementDropdown3.click();
 
-        if(elementInlineCheckbox1.isSelected()){
+        if(elementDropdown3.isSelected()){
             System.out.println("Currently Selected");
         }else{
             System.out.println("Not Selected");
         }
-
     }
 }

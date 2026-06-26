@@ -1,4 +1,4 @@
-package seleniumAssignments;
+package jayeshSonawane.assignments;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

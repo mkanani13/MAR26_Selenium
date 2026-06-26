@@ -1,4 +1,4 @@
-package jayeshSonawane;
+package jayeshSonawane.assignments;
 
 import jayeshSonawane.base.BrowserActions;
 import jayeshSonawane.base.ElementActions;

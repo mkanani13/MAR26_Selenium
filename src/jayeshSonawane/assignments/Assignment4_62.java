@@ -1,4 +1,4 @@
-package seleniumAssignments;
+package jayeshSonawane.assignments;
 
 /*
 Automate the following scenario using Selenium WebDriver in Java:

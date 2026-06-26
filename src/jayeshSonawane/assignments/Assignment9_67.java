@@ -1,30 +1,27 @@
-package seleniumAssignments;
+package jayeshSonawane.assignments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 /*
 Automate the following scenario using Selenium WebDriver in Java:
 
 Open the application: http://automationbykrishna.com/
 Click on the “Basic Elements” tab/button.
 
-Scroll down the page and in the "Checkbox and radios" section perform the following activities:-
+Scroll down the page and in the "Inline checkboxes" section perform the following activities:-
 
-Select the radiobutton
-Option two can be something else and selecting it will deselect option one
+Select the checkbox with number '1'
 
-Use the isSelected() method to confirm whether the intended radiobutton is currently selected or not.
+Use the isSelected() method to confirm whether the intended checkbox is currently selected or not.
 
 Hint:- isSelected() method is used to check whether a selectable element is currently selected or not.
 isSelected() method returns a boolean value.
 if true, then selectable element is currently selected else not selected.
  */
-
-public class Assignment8_66 {
+public class Assignment9_67 {
 
     public static void main(String[] args) {
 
@@ -40,14 +37,14 @@ public class Assignment8_66 {
             throw new RuntimeException(e);
         }
 
-        WebElement elementRadioBox2 = driver.findElement(By.xpath("//input[@id='optionsRadios2']"));
+        WebElement elementInlineCheckbox1 = driver.findElement(By.xpath("//input[@id='inlineCheckbox1']"));
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", elementRadioBox2);
+        js.executeScript("arguments[0].scrollIntoView(true);", elementInlineCheckbox1);
 
-        elementRadioBox2.click();
+        elementInlineCheckbox1.click();
 
-        if(elementRadioBox2.isSelected()){
+        if(elementInlineCheckbox1.isSelected()){
             System.out.println("Currently Selected");
         }else{
             System.out.println("Not Selected");

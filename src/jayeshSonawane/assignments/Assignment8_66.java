@@ -1,4 +1,4 @@
-package seleniumAssignments;
+package jayeshSonawane.assignments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,16 +14,17 @@ Click on the “Basic Elements” tab/button.
 
 Scroll down the page and in the "Checkbox and radios" section perform the following activities:-
 
-Select the checkbox
-"Option one is this and that—be sure to include why it's great option one"
+Select the radiobutton
+Option two can be something else and selecting it will deselect option one
 
-Use the isSelected() method to confirm whether the checkbox is currently selected or not.
+Use the isSelected() method to confirm whether the intended radiobutton is currently selected or not.
 
 Hint:- isSelected() method is used to check whether a selectable element is currently selected or not.
 isSelected() method returns a boolean value.
 if true, then selectable element is currently selected else not selected.
  */
-public class Assignment7_65 {
+
+public class Assignment8_66 {
 
     public static void main(String[] args) {
 
@@ -39,14 +40,14 @@ public class Assignment7_65 {
             throw new RuntimeException(e);
         }
 
-        WebElement elementCheckBox2 = driver.findElement(By.xpath("(//input[@type='checkbox'])[7]"));
+        WebElement elementRadioBox2 = driver.findElement(By.xpath("//input[@id='optionsRadios2']"));
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].scrollIntoView(true);",elementCheckBox2);
+        js.executeScript("arguments[0].scrollIntoView(true);", elementRadioBox2);
 
-        elementCheckBox2.click();
+        elementRadioBox2.click();
 
-        if(elementCheckBox2.isSelected()){
+        if(elementRadioBox2.isSelected()){
             System.out.println("Currently Selected");
         }else{
             System.out.println("Not Selected");

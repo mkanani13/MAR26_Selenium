@@ -1,11 +1,8 @@
-package jayeshSonawane;
+package jayeshSonawane.assignments;
 
 import jayeshSonawane.base.BrowserActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 /*
 Using Selenium WebDriver in Java, automate the following steps:
