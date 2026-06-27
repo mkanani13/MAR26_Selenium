@@ -7,7 +7,7 @@
 //Alert message should pop-up "You must be TechnoCredits student!!"
 
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

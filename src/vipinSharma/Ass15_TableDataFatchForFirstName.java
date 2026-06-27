@@ -7,7 +7,7 @@
 //Retrieve the corresponding value from the "Username" column in the same row.
 //Print the extracted Username value in the Console.
 
-package automationScritps;
+package vipinSharma;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

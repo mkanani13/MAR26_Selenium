@@ -6,7 +6,7 @@
 //Read all the rows and columns present in the table.
 //Print the complete table data in the Console Output.
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
