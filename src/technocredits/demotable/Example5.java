@@ -14,7 +14,7 @@ public class Example5 {
 
     @Test
     private void m1(){
-        driver = BrowserActions.start();
+        BrowserActions.start();
         driver.findElement(By.linkText("Demo Tables")).click();
         int size = driver.findElements(By.xpath("//table")).size();
         System.out.println("m1");
