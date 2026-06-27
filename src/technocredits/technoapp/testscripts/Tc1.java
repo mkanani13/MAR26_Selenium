@@ -53,8 +53,8 @@ public class Tc1 {
         }
         softAssert.assertAll();
 
- //       System.out.println("STEP - close doc notification");
- //       restaurantsPage.clickOnDismiss();
+        //       System.out.println("STEP - close doc notification");
+        //       restaurantsPage.clickOnDismiss();
 
 //        System.out.println("VERIFY - doc notification is not displayed");
 //        boolean isNotificationDisplayedFlag = restaurantsPage.isDocNotificationDisplayed();
