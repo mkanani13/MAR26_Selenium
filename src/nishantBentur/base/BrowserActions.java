@@ -4,11 +4,18 @@ import nishantBentur.customException.InvalidBrowserException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.time.Duration;
 
 public class BrowserActions {
     protected static WebDriver driver = null;
+    protected static WebDriverWait wait;
+    protected static Actions actions;
+
 
     public static WebDriver start(String browser, String url) {
 
@@ -27,12 +34,13 @@ public class BrowserActions {
 
         driver.get(url);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
         return driver;
     }
 
     public static WebDriver start() {
-        return start("CHROME", "http://automationbykrishna.com/");
+        return start("CHROME", "http://34.66.197.232/#/access");
     }
 
     public static WebDriver start(String url) {
