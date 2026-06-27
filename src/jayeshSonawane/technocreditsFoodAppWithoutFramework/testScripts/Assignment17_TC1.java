@@ -30,7 +30,6 @@ Expected Result:
 The order should be placed successfully, and the "My Orders" page should display the details of the newly created order.
  */
 public class Assignment17_TC1 {
-    WebDriver driver = null;
     Login login = new Login();
     FindFood findFood = new FindFood();
     MyOrders myOrders = new MyOrders();
