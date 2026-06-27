@@ -8,12 +8,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import java.time.Duration;
 
 public class BrowserActions {
+    protected static WebDriver driver = null;
 
-    public static WebDriver start(String browser, String url){
-        WebDriver driver = null;
+    public static WebDriver start(String browser, String url) {
+
         System.out.println("STEP- Launch the browser and hit the URL");
 
-        switch(browser.toUpperCase()){
+        switch (browser.toUpperCase()) {
             case "CHROME":
                 driver = new ChromeDriver();
                 break;
@@ -30,11 +31,15 @@ public class BrowserActions {
         return driver;
     }
 
-    public static WebDriver start(){
+    public static WebDriver start() {
         return start("CHROME", "http://automationbykrishna.com/");
     }
 
-    public static WebDriver start(String url){
+    public static WebDriver start(String url) {
         return start("CHROME", url);
+    }
+
+    public static void closeBrowser() {
+        driver.close();
     }
 }
