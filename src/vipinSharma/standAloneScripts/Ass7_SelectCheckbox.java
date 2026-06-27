@@ -5,16 +5,16 @@
 //
 //Scroll down the page and in the "Checkbox and radios" section perform the following activities:-
 //
-//Select the radiobutton
-//Option two can be something else and selecting it will deselect option one
+//Select the checkbox
+//"Option one is this and that—be sure to include why it's great option one"
 //
-//Use the isSelected() method to confirm whether the intended radiobutton is currently selected or not.
+//Use the isSelected() method to confirm whether the checkbox is currently selected or not.
 //
 //Hint:- isSelected() method is used to check whether a selectable element is currently selected or not.
 //isSelected() method returns a boolean value.
 //if true, then selectable elemment is currently selected else not selected.
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +23,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Ass8_SelectRadioButton {
+public class Ass7_SelectCheckbox {
 
     WebDriver driver;
     Alert alert;
@@ -51,16 +51,18 @@ public class Ass8_SelectRadioButton {
     }
 
     @Test
-    public void radioBtnSelection() throws InterruptedException {
-        WebElement radioButton=driver.findElement(By.xpath("//div[@class='form-group']//input[@id='optionsRadios2']"));
-        System.out.println("STEP - Element Scroll");
+    public void checkBoxSelection() throws InterruptedException {
+        Thread.sleep(1000);
+        WebElement checkBox=driver.findElement(By.xpath("//div[@class='form-group']//div[2]//label[1]"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);",radioButton);
-        System.out.println("STEP - Radio button click");
-        boolean actualRadioBtnResult = radioButton.isSelected();
-        boolean expectedRadioBtnResult = false;
-        Assert.assertEquals(actualRadioBtnResult, expectedRadioBtnResult, "Radio Button already selected");
-        System.out.println("STEP - Radio button click");
-        radioButton.click();
+        js.executeScript("arguments[0].scrollIntoView(true);",checkBox );
+        System.out.println("STEP - Element Scroll");
+        Thread.sleep(1000);
+        boolean actualCheckBoxResult = checkBox.isSelected();
+        boolean expectedCheckBoxResult = false;
+        Assert.assertEquals(actualCheckBoxResult, expectedCheckBoxResult, "CheckBox already selected");
+        System.out.println("STEP - CheckBox click");
+        checkBox.click();
     }
+
 }

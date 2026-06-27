@@ -8,7 +8,7 @@
 //Deselect the option '5' and print the updated selected options in the Console.
 //Deselect the option '2' and print the updated selected options in the Console again.
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
