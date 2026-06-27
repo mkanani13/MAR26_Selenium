@@ -1,6 +1,6 @@
 package technocredits.demotable;
 
-import technocredits.base.BrowserActions;
+import technocredits.technoapp.base.BrowserActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -14,7 +14,7 @@ public class Example5 {
 
     @Test
     private void m1(){
-        driver = BrowserActions.start();
+        BrowserActions.start();
         driver.findElement(By.linkText("Demo Tables")).click();
         int size = driver.findElements(By.xpath("//table")).size();
         System.out.println("m1");
