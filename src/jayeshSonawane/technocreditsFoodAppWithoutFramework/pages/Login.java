@@ -9,7 +9,8 @@ import org.testng.Assert;
 public class Login extends BrowserActions {
 
     public void login(){
-        driver = BrowserActions.start("CHROME", "http://34.173.201.53/access#/login");
+        // driver = BrowserActions.start("CHROME", "http://34.173.201.53/access#/login");
+        BrowserActions.start("CHROME", "http://34.66.197.232/#/access");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-testid='access-submit-btn']")));
 

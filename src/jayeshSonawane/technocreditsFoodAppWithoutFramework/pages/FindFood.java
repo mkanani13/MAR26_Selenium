@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class FindFood extends BrowserActions {
 
     public void verifyLoggedInUserName() {
@@ -21,7 +23,10 @@ public class FindFood extends BrowserActions {
 
     public void findRestaurantByLocality(String locality, String restaurant) {
         System.out.println("STEP - From the locality dropdown, select " + locality);
-        WebElement elLocalityDD = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='locality-filter' and @data-testid='locality-dropdown']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@alt='Balance Brew Cafe logo']")));
+//        WebElement elLocalityDD = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='locality-filter' and @data-testid='locality-dropdown']")));
+        WebElement elLocalityDD = driver.findElement(By.xpath("//select[@id='locality-filter' and @data-testid='locality-dropdown']"));
+//        WebElement elLocalityDD = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='locality-filter' and @data-testid='locality-dropdown']")));
         Select localityOptions = new Select(elLocalityDD);
         localityOptions.selectByVisibleText(locality);
 
@@ -48,7 +53,6 @@ public class FindFood extends BrowserActions {
         System.out.println("STEP - Verify that the cart displays a subtotal greater than zero.");
         String strSubTotal = driver.findElement(By.xpath("//div[@id='order-totals']/strong[@id='ot-subtotal']")).getText().substring(1);
         double subTotal = Double.parseDouble(strSubTotal);
-        System.out.println("subTotal : " + subTotal);
         Assert.assertTrue(subTotal > 0, "Verify that the cart displays a subtotal greater than zero.");
 
         System.out.println("Click on Proceed to Checkout");

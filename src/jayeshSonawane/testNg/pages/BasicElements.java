@@ -106,7 +106,7 @@ public class BasicElements extends BrowserActions {
         clickBasicElements();
         System.out.println("STEP - Scroll till check box element");
 
-        JavascriptExecutor js = ElementActions.scrollTo();
+        //JavascriptExecutor js = ElementActions.scrollTo();
 
 
     }
