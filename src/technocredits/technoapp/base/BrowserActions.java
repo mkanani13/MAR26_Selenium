@@ -6,14 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import technocredits.customexception.BrowserInvalidException;
 
 public class BrowserActions {
     protected static WebDriver driver = null;
     protected static WebDriverWait wait;
+    protected static Actions actions;
 
-	public static WebDriver start() {
+    public static WebDriver start() {
 		return start("CHROME", "http://automationbykrishna.com");
 	}
 	
@@ -39,6 +41,7 @@ public class BrowserActions {
 		driver.get(url);
 		driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver; 
 	}

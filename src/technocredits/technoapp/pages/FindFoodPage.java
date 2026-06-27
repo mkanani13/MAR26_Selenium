@@ -9,7 +9,7 @@ import technocredits.technoapp.base.BrowserActions;
 
 import java.util.*;
 
-public class RestaurantsPage extends BrowserActions {
+public class FindFoodPage extends BrowserActions {
     private final String LOCALITYFILTER_XPATH = "//select[@data-testid='locality-dropdown']";
 
     public void waitForPageLoad(){
@@ -67,5 +67,28 @@ public class RestaurantsPage extends BrowserActions {
         }catch (NoSuchElementException ne) {
             return false;
         }
+    }
+
+    public String getFirstRestaurantNameHavingDishes(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[text()='View & order'])[1] | //div[@data-testid='restaurants-empty']")));
+        String restaurantName = null;
+        try{
+            restaurantName = driver.findElement(By.xpath("//div[@data-testid = 'restaurants-grid']//p[1][not(contains(text(),' 0 dishes'))]/preceding-sibling::h3")).getText().trim();
+        }catch(NoSuchElementException ne){
+            System.out.println("Either no restaurants or all the restaurants having 0 dishes");
+        }
+        String[] arr = restaurantName.split(" ");
+        //String[] tempArr = Arrays.copyOf(arr,arr.length-1);
+        //restaurantName = String.join(" ",tempArr);
+        restaurantName = "";
+        for(int index = 0; index<arr.length-1;index++){
+           restaurantName += arr[index] + " ";
+        }
+        return restaurantName.trim();
+    }
+
+    public void clickOnViewOrder(String restaurantName){
+        WebElement viewOrderLink = driver.findElement(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/following::a[1]"));
+        viewOrderLink.click();
     }
 }
