@@ -142,7 +142,7 @@ public class Assignment19 {
         Assert.assertEquals(orderId, finalOrderNum);
 
         System.out.println("VERIFY- Verify that the Amount paid displayed in the Track Order tab/section is same as the price displayed under the Total column for the placed Order number in the View my orders tab/section");
-        String amtDisplayedOnMyOrdersPageText = driver.findElement(By.xpath("//tbody[@data-testid='orders-tbody']/tr[1]/td[4]")).getText().substring(1);
+        String amtDisplayedOnMyOrdersPageText = driver.findElement(By.xpath("//tbody[@data-testid='orders-tbody']/tr[1]/td[5]")).getText().substring(1);
         double amtDisplayedOnMyOrdersPage = Double.parseDouble(amtDisplayedOnMyOrdersPageText);
         Assert.assertEquals(amtDisplayedOnMyOrdersPage, expectedPayableAmt);
     }

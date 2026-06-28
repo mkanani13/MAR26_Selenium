@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class MyOrdersPage extends BrowserActions {
 
     private static String FIRST_ORDER_LOCATOR = "(//td[contains(@data-testid,'order-number')])[1]";
-    private static String FIRST_ORDER_AMOUNT_LOCATOR = "//tbody[@data-testid='orders-tbody']/tr[1]/td[4]";
+    private static String FIRST_ORDER_AMOUNT_LOCATOR = "//tbody[@data-testid='orders-tbody']/tr[1]/td[5]";
 
     public void waitForPageLoad(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(FIRST_ORDER_LOCATOR)));
