@@ -4,6 +4,7 @@ package Amitjoshi.TechnoAppTesting.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import technocredits.technoapp.base.BrowserActions;
 
@@ -14,8 +15,14 @@ import java.util.TreeSet;
 
 public class RestaurantsPage extends BrowserActions {
 
+    private final String LOCALITYFILTER_XPATH = "//select[@data-testid='locality-dropdown']";
+
+    public void waitForPageLoad(){
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@id='restaurants-grid']/div"),1));
+    }
+
     public Set<String> getLocationsFromLocationDropdown(){
-        WebElement locationDD = driver.findElement(By.xpath("//select[@id='locality-filter']"));
+        WebElement locationDD = driver.findElement(By.xpath(LOCALITYFILTER_XPATH));
         Select locationSelect = new Select(locationDD);
         Set<String> listOptionsText = new LinkedHashSet<>();
 
@@ -45,13 +52,13 @@ public class RestaurantsPage extends BrowserActions {
     }
 
     public void setLocationInDropdown(String locationText){
-        WebElement locationDD = driver.findElement(By.xpath("//select[@id='locality-filter']"));
+        WebElement locationDD = driver.findElement(By.xpath(LOCALITYFILTER_XPATH));
         Select locationSelect = new Select(locationDD);
         locationSelect.selectByVisibleText(locationText);
     }
 
     public boolean isNoRestaurantsLabelIsDisplayed(){
-        boolean flag = driver.findElement(By.xpath("//div[text()='No restaurants.']")).isDisplayed();
+        boolean flag = driver.findElement(By.xpath("//div[text()='No restaurants match your filters.']")).isDisplayed();
         return flag;
     }
 
