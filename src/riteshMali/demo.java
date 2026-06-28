@@ -1,7 +1,6 @@
 package riteshMali;
 
-
-import technocredits.base.BrowserActions;
+import technocredits.technoapp.base.BrowserActions;
 
 public class demo {
     public static void main(String[] args) {

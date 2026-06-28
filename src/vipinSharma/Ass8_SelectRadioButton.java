@@ -14,7 +14,7 @@
 //isSelected() method returns a boolean value.
 //if true, then selectable elemment is currently selected else not selected.
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

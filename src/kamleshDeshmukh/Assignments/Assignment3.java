@@ -1,12 +1,11 @@
 //Alert Pop-up
 
-package kamleshDeshmukh;
+package kamleshDeshmukh.Assignments;
 
-import technocredits.base.BrowserActions;
+import kamleshDeshmukh.base.BrowserActions;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -48,8 +47,6 @@ public class Assignment3 {
 
         System.out.println("STEP = Check Alert Message");
         Assert.assertEquals(alertMessage, expectedMessage);
-
-
     }
 
     @AfterMethod
@@ -59,5 +56,4 @@ public class Assignment3 {
             driver.quit();
         }
     }
-
 }

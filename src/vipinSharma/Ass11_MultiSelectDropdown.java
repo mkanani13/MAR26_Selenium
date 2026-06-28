@@ -6,7 +6,7 @@
 //From the multi-select dropdown, choose the options '2' and '5'.
 //Retrieve the selected values and display the Output in the Console.
 
-package automationScritps;
+package vipinSharma;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
