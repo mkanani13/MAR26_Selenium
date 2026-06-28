@@ -35,4 +35,9 @@ public class OrderSuccessPage extends BrowserActions {
     public void clickOnViewMyOrder(){
         driver.findElement(By.xpath("//a[@data-testid='success-view-orders']")).click();
     }
+
+    public void clickOnTrackOrder(){
+        driver.findElement(By.linkText("Track order")).click();
+    }
+
 }
