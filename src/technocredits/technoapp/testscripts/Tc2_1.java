@@ -13,8 +13,12 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import technocredits.technoapp.base.BrowserActions;
 import technocredits.technoapp.pages.*;
+import technocredits.technoapp.utility.DateTimeUtility;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class Tc2_1 {
 
@@ -105,6 +109,7 @@ public class Tc2_1 {
 
         System.out.println("STEP - Click on Pay & Place Order");
         paymentPage.clickOnPayPlaceOrderBtn();
+        String expectedOrderDateTime = DateTimeUtility.getCurrentDateTime();
 
         OrderSuccessPage orderSuccessPage = new OrderSuccessPage();
         orderSuccessPage.waitForPageLoad();
@@ -133,6 +138,33 @@ public class Tc2_1 {
 
         System.out.println("STEP - Click on View my orders");
         orderSuccessPage.clickOnViewMyOrder();
+
+        MyOrderPage myOrderPage = new MyOrderPage();
+        myOrderPage.waitForPageLoad();
+
+        System.out.println("STEP - Search Order");
+        myOrderPage.searchOrderWithExactId(orderSummaryPage_orderId);
+
+        System.out.println("STEP - get details of the order from my order table");
+        Map<String, String> orderDetailsMap = myOrderPage.getOrderDetails();
+
+        System.out.println("VERIFY - verify Order details");
+        Assert.assertEquals(orderDetailsMap.get("Order #"), orderSummaryPage_orderId);
+        Assert.assertEquals(orderDetailsMap.get("Date"),expectedOrderDateTime);
+        Assert.assertTrue(orderDetailsMap.get("Restaurant").contains(restaurantName));
+        Assert.assertEquals(orderDetailsMap.get("Total"),subTotalText);
+        //Assert.assertTrue(getOrderStatusList().contains(orderDetailsMap.get("Status")));
+        Assert.assertListContainsObject(getOrderStatusList(),orderDetailsMap.get("Status"),"Displayed Status was not in the list");
+    }
+
+    private List<String> getOrderStatusList(){
+        List<String> orderStatusList = new ArrayList<>();
+        orderStatusList.add("Pending");
+        orderStatusList.add("Accepted");
+        orderStatusList.add("Out for Delivery");
+        orderStatusList.add("Delivered");
+        orderStatusList.add("Cancelled");
+        return orderStatusList;
     }
 
 }
