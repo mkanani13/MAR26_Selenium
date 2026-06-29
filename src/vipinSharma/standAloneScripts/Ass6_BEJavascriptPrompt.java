@@ -9,7 +9,7 @@
 //        "Hello NAME! How are you today?"
 
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

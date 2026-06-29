@@ -1,12 +1,5 @@
 package technocredits.technoapp.testscripts;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,12 +8,9 @@ import technocredits.technoapp.base.BrowserActions;
 import technocredits.technoapp.pages.*;
 import technocredits.technoapp.utility.DateTimeUtility;
 
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class Tc2_1 {
+public class Tc3 {
 
     @BeforeMethod
     public void setup(){
@@ -131,40 +121,45 @@ public class Tc2_1 {
         String orderSummaryPage_orderId = orderSuccessPage.getOrderNumber();
         softAssert.assertTrue(orderSummaryPage_orderId.startsWith("ORDER#"));
 
+        List<String> orderDetailsExpectedList = new ArrayList<>();
+        orderDetailsExpectedList.add(orderSummaryPage_orderId);
+        orderDetailsExpectedList.add(orderSummaryPage_restuarantName);
+        orderDetailsExpectedList.add(orderSummaryPage_amountPaid);
+
         System.out.println("VERIFY - Payment Method (Paid Via)");
         String orderSummaryPage_paymentMethod = orderSuccessPage.getPaymentMode();
         softAssert.assertEquals(orderSummaryPage_paymentMethod, "UPI");
         softAssert.assertAll();
 
-        System.out.println("STEP - Click on View my orders");
-        orderSuccessPage.clickOnViewMyOrder();
+        System.out.println("STEP - Click on track order");
+        orderSuccessPage.clickOnTrackOrder();
 
-        MyOrderPage myOrderPage = new MyOrderPage();
-        myOrderPage.waitForPageLoad();
+        System.out.println("Switch to OrderTrackSummaryPage");
+        OrderTrackSummaryPage orderTrackSummaryPage = new OrderTrackSummaryPage();
+        orderTrackSummaryPage.switchToTrackOrderWindow();
+        orderTrackSummaryPage.waitForPageLoad();
 
-        System.out.println("STEP - Search Order");
-        myOrderPage.searchOrderWithExactId(orderSummaryPage_orderId);
+        System.out.println("STEP - get order summary details");
+        List<String> orderDetailsActualList = orderTrackSummaryPage.getOrderDetails();
+        Assert.assertEquals(orderDetailsActualList, orderDetailsExpectedList);
 
-        System.out.println("STEP - get details of the order from my order table");
-        Map<String, String> orderDetailsMap = myOrderPage.getOrderDetails();
+        System.out.println("VERIFY - food deliver status and respective message");
+        boolean isOrderDeliveredFlag = orderTrackSummaryPage.isOrderDelivered();
+        boolean isOrderDeliverTextFlag =  orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
+        System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
+        System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
+        Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
 
-        System.out.println("VERIFY - verify Order details");
-        Assert.assertEquals(orderDetailsMap.get("Order #"), orderSummaryPage_orderId);
-        Assert.assertEquals(orderDetailsMap.get("Date"),expectedOrderDateTime);
-        Assert.assertTrue(orderDetailsMap.get("Restaurant").contains(restaurantName));
-        Assert.assertEquals(orderDetailsMap.get("Total"),subTotalText);
-        //Assert.assertTrue(getOrderStatusList().contains(orderDetailsMap.get("Status")));
-        Assert.assertListContainsObject(getOrderStatusList(),orderDetailsMap.get("Status"),"Displayed Status was not in the list");
+        System.out.println("STEP - wait for order to be delivered");
+        orderTrackSummaryPage.waitForOrderToBeDelivered();
+
+        System.out.println("VERIFY - food deliver status and respective message");
+        isOrderDeliveredFlag = orderTrackSummaryPage.isOrderDelivered();
+        isOrderDeliverTextFlag =  orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
+        System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
+        System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
+        Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
+
+
     }
-
-    private List<String> getOrderStatusList(){
-        List<String> orderStatusList = new ArrayList<>();
-        orderStatusList.add("Pending");
-        orderStatusList.add("Accepted");
-        orderStatusList.add("Out for Delivery");
-        orderStatusList.add("Delivered");
-        orderStatusList.add("Cancelled");
-        return orderStatusList;
-    }
-
 }
