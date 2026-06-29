@@ -67,7 +67,7 @@ public class Assignment17_TC1 {
         findFoodMenuPage.clickOnProceedToCheckoutButton();
 
         System.out.println("STEP - Enter a valid delivery address and mobile number.");
-        FindFoodOrderSummary findFoodOrderSummary = new FindFoodOrderSummary();
+        FindFoodCheckoutPage findFoodOrderSummary = new FindFoodCheckoutPage();
         findFoodOrderSummary.waitForPageLoad();
         System.out.println("Verify Restaurant");
         Assert.assertTrue(findFoodOrderSummary.verifyRestaurant(restaurantName));
@@ -77,6 +77,20 @@ public class Assignment17_TC1 {
         findFoodOrderSummary.enterDeliveryDetails("Wakad", "9876543210");
         System.out.println("Click on Continue to Payment");
         findFoodOrderSummary.clickOnContinueToPaymentButton();
+
+        FindFoodPaymentPage findFoodPaymentPage = new FindFoodPaymentPage();
+        findFoodPaymentPage.waitForPageLoad();
+        System.out.println("STEP - Pay Using UPI");
+        findFoodPaymentPage.payUsingUPI();
+        System.out.println("STEP - Click on Place Order Button");
+        findFoodPaymentPage.clickOnPlaceOrderButton();
+
+        System.out.println("STEP - Check Order is Placed Successfully");
+        MyOrdersOrderPlacedPage myOrdersOrderPlacedPage = new MyOrdersOrderPlacedPage();
+        myOrdersOrderPlacedPage.waitForPageLoad();
+        Assert.assertTrue(myOrdersOrderPlacedPage.isOrderPlaced());
+
+
     }
 
     @AfterMethod

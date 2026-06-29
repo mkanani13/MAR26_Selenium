@@ -3,7 +3,7 @@ package jayeshSonawane.technocreditsFoodAppWithFramework.pages;
 import jayeshSonawane.technocreditsFoodAppWithFramework.base.BrowserActions;
 import org.openqa.selenium.By;
 
-public class FindFoodOrderSummary extends BrowserActions {
+public class FindFoodCheckoutPage extends BrowserActions {
 
     public final String CONTINUETOPAYMENTBUTTONXPATH = "//button[@id='co-continue']";
 

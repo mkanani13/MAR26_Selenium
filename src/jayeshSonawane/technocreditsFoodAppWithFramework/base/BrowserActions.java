@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class BrowserActions {
 
-    protected static WebDriver driver = null;
+    protected static WebDriver driver;
     protected static WebDriverWait wait ;
     protected static Actions actions;
 
