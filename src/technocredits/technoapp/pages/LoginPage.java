@@ -14,7 +14,7 @@ public class LoginPage extends BrowserActions {
         System.out.println("STEP - Enter Access code");
         driver.findElement(By.xpath("//input[@data-testid='access-code']")).sendKeys("7MNT2R2F");
 
-        System.out.println("STEP - Click on continue button");
+            System.out.println("STEP - Click on continue button");
         driver.findElement(By.xpath("//button[text()= 'Continue']")).click();
 
         System.out.println("STEP - Click on Sign In Food link");
