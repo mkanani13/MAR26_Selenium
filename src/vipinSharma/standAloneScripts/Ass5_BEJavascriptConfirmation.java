@@ -9,7 +9,7 @@
 //       "You pressed OK!"
 
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

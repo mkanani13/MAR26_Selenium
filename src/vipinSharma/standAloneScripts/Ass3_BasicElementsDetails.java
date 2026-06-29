@@ -1,22 +1,26 @@
-// Selenium Assignment - 4: 9th June'2026
-
+// Selenium Assignment - 3: 9th June'2026
 //Automate the following scenario using Selenium WebDriver in Java:
 //Open the application: http://automationbykrishna.com/
 //Click on the “Basic Elements” tab/button.
-//Click on the “Alert” tab/button present under DIFFERENT EXAMPLES OF ALERTS.
-//Alert message should pop-up "You must be TechnoCredits student!!"
+//Enter values in:
+//FirstName field
+//LastName field
+//CompanyName field
+//Click on the Submit button.
+//Alert message should pop-up "FirstName and LastName and CompanyName"
 
+package vipinSharma.standAloneScripts;
 
-package vipinSharma;
-
-import org.openqa.selenium.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Ass4_BEDetailsAlert {
+public class Ass3_BasicElementsDetails {
     WebDriver driver;
 
     @BeforeTest
@@ -40,23 +44,22 @@ public class Ass4_BEDetailsAlert {
         System.out.println("Browser closed");
     }
 
-
-    @Test
-    public void javaScriptAlertCheck() throws InterruptedException {
-        System.out.println("STEP - Javascript alert button click");
+   @Test
+    public void verifyAlertText() throws InterruptedException {
         Thread.sleep(1000);
-        WebElement javascriptAlert = driver.findElement(By.id("javascriptAlert"));
-        System.out.println("STEP - Element Scroll");
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", javascriptAlert);
-        javascriptAlert.click();
+        System.out.println("STEP - Login details fill and submit button click");
+        driver.findElement(By.name("ufname")).sendKeys("Vipin");
+        driver.findElement(By.name("ulname")).sendKeys("Sharma");
+        driver.findElement(By.name("cmpname")).sendKeys("TechnoCredit");
+        driver.findElement(By.xpath("(//*[text()='Submit'])[1]")).click();
         Thread.sleep(1000);
         System.out.println("STEP - Verification of alert message");
-        Alert alert = driver.switchTo().alert();
-        String alertActualText= alert.getText();
-        String expectedActualText= "You must be TechnoCredits student!!";
-        Assert.assertEquals(alertActualText, expectedActualText, "Alert message did not match!");
-        System.out.println("STEP - Alert Ok button click");
-        alert.accept();
+        Alert alert= driver.switchTo().alert();
+        String actualAlertText = alert.getText();
+        String expectedAlertText = "Vipin and Sharma and TechnoCredit";
+       Assert.assertEquals(actualAlertText, expectedAlertText, "Alert message did not match!");
+       System.out.println("STEP - Alert Ok button click");
+       alert.accept();
+
     }
 }
