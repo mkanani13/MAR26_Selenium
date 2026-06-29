@@ -16,37 +16,37 @@ public class BrowserActions {
     protected static Actions actions;
 
     public static WebDriver start() {
-		return start("CHROME", "http://automationbykrishna.com");
-	}
-	
-	public static WebDriver start(String url) {
-		return start("CHROME", url);
-	}
-	
-	public static WebDriver start(String browser, String url) {
-		System.out.println("STEP - Launch browser & hit url");
-		switch(browser.toUpperCase()) {
-		 case "CHROME" :
-			 driver = new ChromeDriver();
-			 break;
-			 
-		 case "EDGE" : 
-			 driver = new EdgeDriver();
-			 break;
-			 
-		default : 
-			throw new BrowserInvalidException("Given browser not supported");
-		}
-		
-		driver.get(url);
-		driver.manage().window().maximize();
+        return start("CHROME", "http://automationbykrishna.com");
+    }
+
+    public static WebDriver start(String url) {
+        return start("CHROME", url);
+    }
+
+    public static WebDriver start(String browser, String url) {
+        System.out.println("STEP - Launch browser & hit url");
+        switch (browser.toUpperCase()) {
+            case "CHROME":
+                driver = new ChromeDriver();
+                break;
+
+            case "EDGE":
+                driver = new EdgeDriver();
+                break;
+
+            default:
+                throw new BrowserInvalidException("Given browser not supported");
+        }
+
+        driver.get(url);
+        driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
-		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return driver; 
-	}
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        return driver;
+    }
 
-    public static void quitBrowser(){
+    public static void quitBrowser() {
         driver.close();
     }
 }
