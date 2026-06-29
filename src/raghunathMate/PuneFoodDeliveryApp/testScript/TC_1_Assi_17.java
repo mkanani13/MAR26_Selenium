@@ -79,7 +79,8 @@ public class TC_1_Assi_17 {
         System.out.println("Step - 14.Verify that the My Orders page is displayed.");
         OrderSuccessPage ordersuccesspage = new OrderSuccessPage();
         ordersuccesspage.waitForPageLoad();
-        ordersuccesspage.getOrderId();
+        String orderId = ordersuccesspage.getOrderId();
+        System.out.println(orderId);
         ordersuccesspage.clickOnViewMyOrderButton();
 
         System.out.println("Step - 14.Verify that the My Orders page is displayed.");
@@ -89,7 +90,7 @@ public class TC_1_Assi_17 {
         softassert.assertTrue(pageTitle);
 
         System.out.println("Step - 15.Confirm that the newly placed order details are visible on the \"My Orders\" page");
-        boolean idPresentFlag = myorderpage.checkOrderIdIsPresentOrNotInMyOrderPage();
+        boolean idPresentFlag = myorderpage.checkOrderIdIsPresentOrNotInMyOrderPage(orderId);
         softassert.assertTrue(idPresentFlag,"Order id is not present in My Orders page");
         softassert.assertAll();
     }

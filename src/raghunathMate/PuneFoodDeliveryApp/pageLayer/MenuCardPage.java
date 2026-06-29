@@ -18,8 +18,10 @@ public class MenuCardPage extends BrowserAction {
     }
 
     public String getDishNameWhichStockShouldBeNonZero() {
-        String dish = driver.findElement(By.xpath("(//table[@data-testid ='menu-table']/tbody/tr/td[4][text()>0])[1]/preceding-sibling::td[3]")).getText();
+        String dish = driver.findElement(By.xpath("(//table[@data-testid ='menu-table']/tbody/tr/td[4][text()>0])[1]/preceding-sibling::td[3]/div/div/div[1]")).getText();
+        System.out.println(dish);
         return dish;
+
     }
 
     public void quantityForGivenDish(String dish, int quantity){

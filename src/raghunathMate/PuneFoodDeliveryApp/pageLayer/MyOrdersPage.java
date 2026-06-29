@@ -18,12 +18,11 @@ public class MyOrdersPage extends BrowserAction {
         return pageTileFlage;
     }
 
-    public boolean checkOrderIdIsPresentOrNotInMyOrderPage(){
-        orderIdFroMOrderSuccessPage = OrderSuccessPage.orderId;
+    public boolean checkOrderIdIsPresentOrNotInMyOrderPage(String orderId){
         boolean orderIdPresentFlage = false;
-        List<WebElement> listOfOrderIDs = driver.findElements(By.xpath("//tr/td[1]"));
+        List<WebElement> listOfOrderIDs = driver.findElements(By.xpath("//tr/td[2]"));
         for(WebElement id : listOfOrderIDs){
-            if(orderIdFroMOrderSuccessPage.equals(id.getText())){
+            if(orderId.equals(id.getText())){
                 orderIdPresentFlage = true;
                 break;
             }

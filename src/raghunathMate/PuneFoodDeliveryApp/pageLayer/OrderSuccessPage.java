@@ -7,14 +7,13 @@ import raghunathMate.PuneFoodDeliveryApp.testBase.BrowserAction;
 
 public class OrderSuccessPage extends BrowserAction {
     private WebElement viewMyOrderButton;
-    public static String orderId;
 
     public void waitForPageLoad(){
         viewMyOrderButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='View my orders']")));
     }
 
-    public void getOrderId() {
-        orderId =driver.findElement(By.xpath("//span[@data-testid = 'success-order-number']")).getText();
+    public String getOrderId() {
+        return driver.findElement(By.xpath("//span[@data-testid = 'success-order-number']")).getText();
     }
     public void clickOnViewMyOrderButton(){
         viewMyOrderButton.click();
