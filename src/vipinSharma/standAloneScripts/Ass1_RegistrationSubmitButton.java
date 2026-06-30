@@ -2,7 +2,7 @@
 // Click on the Submit button (Green Tick icon) to complete registration.
 
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

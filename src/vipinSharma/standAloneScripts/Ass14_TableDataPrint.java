@@ -6,11 +6,10 @@
 //Read all the rows and columns present in the table.
 //Print the complete table data in the Console Output.
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
