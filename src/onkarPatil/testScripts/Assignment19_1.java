@@ -118,6 +118,12 @@ public class Assignment19_1 {
         System.out.println("VERIFY- Verify that the Amount paid displayed in the Track Order tab/section is same as the price displayed under the Total column for the placed Order number in the View my orders tab/section");
         double amtDisplayedOnMyOrdersPage = myOrdersPage.getAmtDisplayedForFirstOrder();
         Assert.assertEquals(amtDisplayedOnMyOrdersPage, expectedPayableAmt);
+
+        System.out.println("STEP- Get order details");
+        System.out.println(myOrdersPage.getDateForGivenOrder(orderId));
+        System.out.println(myOrdersPage.getRestaurantNameForGiverOrder(orderId));
+        System.out.println(myOrdersPage.getTotalAmtForGivenOrder(orderId));
+        System.out.println(myOrdersPage.getStatusForGivenOrder(orderId));
     }
 
     @AfterMethod
