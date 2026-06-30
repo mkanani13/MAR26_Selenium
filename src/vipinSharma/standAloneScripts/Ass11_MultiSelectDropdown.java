@@ -1,14 +1,12 @@
-//Using Selenium WebDriver in Java, automate the following scenario:
+//Using Selenium WebDriver with Java, automate the following scenario:
 //
-//Open the website http://automationbykrishna.com/.
-//Click on the "Basic Elements" tab to navigate to the corresponding section.
-//Scroll down to the Multi-Select dropdown.
-//Select the options '2' and '5' from the dropdown.
-//Fetch and print all currently selected options in the Console.
-//Deselect the option '5' from the dropdown.
-//Fetch and print the updated list of selected options in the Console after deselection.
+//Launch the website http://automationbykrishna.com/.
+//Navigate to the "Basic Elements" section by clicking on the corresponding tab.
+//Scroll down until the "Multi-Select" dropdown is visible.
+//From the multi-select dropdown, choose the options '2' and '5'.
+//Retrieve the selected values and display the Output in the Console.
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,7 +18,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Ass12_MultiSelectDropdownDeselect {
+public class Ass11_MultiSelectDropdown {
     WebDriver driver;
     Alert alert;
 
@@ -46,19 +44,18 @@ public class Ass12_MultiSelectDropdownDeselect {
     }
 
     @Test
-    public void multiSelectDrp() throws InterruptedException {
-
+    public void verifyMultiSelectDrpOptions() throws InterruptedException {
         WebElement mulDropdown = driver.findElement(By.xpath("//div[@class='form-group']//select[2]"));
-        System.out.println("STEP- Element Scroll");
+        System.out.println("STEP - Element scroll");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", mulDropdown);
-
         Select sl= new Select(mulDropdown);
         System.out.println("STEP - Verify dropdown is multiple");
         boolean actualDrIsISMultiple = sl.isMultiple();
         boolean expectedDrpIsMultiple = true;
         Assert.assertEquals(actualDrIsISMultiple, expectedDrpIsMultiple, "Dropdown is not mul-selected");
-        System.out.println("STEP - Dropdown option selection");
+        Thread.sleep(1000);
+        System.out.println("STEP - Option selection from dropdown");
         sl.selectByVisibleText("2");
         sl.selectByVisibleText("5");
         List<WebElement> selectedOption = sl.getAllSelectedOptions();
@@ -66,11 +63,9 @@ public class Ass12_MultiSelectDropdownDeselect {
             System.out.println("Selected options are : " + optionList.getText());
         }
 
-        System.out.println("STEP -  Dropdown option deselection");
-        sl.deselectByVisibleText("5");
-        List<WebElement> selectedOptionAfterDeselect = sl.getAllSelectedOptions();
-        for (WebElement optionList: selectedOptionAfterDeselect){
-            System.out.println("Selected options after deselect : " + optionList.getText());
-        }
+        //boolean actualCheckBoxResult = checkBox.isSelected();
+        //boolean expecteCheckBoxResult = false;
+       // Assert.assertEquals(actualCheckBoxResult, expecteCheckBoxResult, "Check box already selected");
+
     }
 }
