@@ -1,14 +1,13 @@
-//Using Selenium WebDriver in Java, automate the following scenario:
+// Using Selenium WebDriver in Java, automate the following steps:
 //
-//Open the website http://automationbykrishna.com/.
-//Click on the "Demo Tables" tab to navigate to the tables section.
+//Launch the website http://automationbykrishna.com/.
+//Navigate to the "Demo Tables" section by clicking on the corresponding tab.
 //Locate the "EMPLOYEE BASIC INFORMATION" table.
-//Read and iterate through all the rows of the table.
-//Find the row where the "Username" column contains the value "asharma".
-//From the same row, retrieve the corresponding value from the "First Name" column.
-//Print the extracted First Name value in the Console.
+//Traverse through the table data and identify the row where the "First Name" column value is "Priya".
+//Retrieve the corresponding value from the "Username" column in the same row.
+//Print the extracted Username value in the Console.
 
-package vipinSharma;
+package vipinSharma.standAloneScripts;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +20,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ass16_TableDataFatct {
+public class Ass15_TableDataFatchForFirstName {
     WebDriver driver;
     Alert alert;
 
@@ -46,24 +45,23 @@ public class Ass16_TableDataFatct {
         System.out.println("Browser closed");
     }
 
-    List<String> getFirstname(String firstName) {
+    List<String> getUsername(String firstName) {
         List<String> listOfUsername = new ArrayList<String>();
         int totalRows = driver.findElements(By.xpath("//table[@id='table1']/tbody/tr")).size();
 
         for (int rowIndex = 1; rowIndex <= totalRows; rowIndex++) {
-            String Uname = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[" + rowIndex + "]/td[4]")).getText();
-            if (Uname.equals(firstName)) {
-                listOfUsername.add(driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[" + rowIndex + "]/td[2]")).getText());
+            String fname = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[" + rowIndex + "]/td[2]")).getText();
+            if (fname.equals(firstName)) {
+                listOfUsername.add(driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[" + rowIndex + "]/td[4]")).getText());
             }
         }
         return listOfUsername;
     }
 
-    @Test
-    public void verifyFNameByUN () throws InterruptedException {
-        List<String> userNameList = getFirstname("asharma");
-        System.out.println(userNameList);
-    }
-
+        @Test
+        public void verifyUNameByFname () throws InterruptedException {
+            System.out.println("STEP - Finding UserName by FirstName");
+            List<String> userNameList = getUsername("Priya");
+            System.out.println(userNameList);
+        }
 }
-
