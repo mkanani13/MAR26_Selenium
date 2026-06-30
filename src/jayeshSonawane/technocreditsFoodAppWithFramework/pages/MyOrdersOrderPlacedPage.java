@@ -28,8 +28,8 @@ public class MyOrdersOrderPlacedPage extends BrowserActions {
         List<String> orderDetails = new ArrayList<>();
 
         orderDetails.add(driver.findElement(By.xpath("//span[starts-with(text(),'ORDER#')]")).getText());
-        orderDetails.add(driver.findElement(By.xpath("")).getText());
-        orderDetails.add(driver.findElement(By.xpath("")).getText());
+        orderDetails.add(driver.findElement(By.xpath("//span[@data-testid='success-amount']")).getText());
+        orderDetails.add(driver.findElement(By.xpath("//div[@id='success-host']/div/div/div/following-sibling::div[2]/span[2]")).getText());
 
         return orderDetails;
     }

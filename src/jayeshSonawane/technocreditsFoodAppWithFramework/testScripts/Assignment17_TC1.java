@@ -7,6 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class Assignment17_TC1 {
 
     @BeforeMethod
@@ -89,13 +91,15 @@ public class Assignment17_TC1 {
         MyOrdersOrderPlacedPage myOrdersOrderPlacedPage = new MyOrdersOrderPlacedPage();
         myOrdersOrderPlacedPage.waitForPageLoad();
         Assert.assertTrue(myOrdersOrderPlacedPage.isOrderPlaced());
-
-
+        List<String> orderDetails = myOrdersOrderPlacedPage.getOrderDetails();
+        System.out.println("Order Number = " + orderDetails.get(0));
+        System.out.println("Amount Paid = " + orderDetails.get(1));
+        System.out.println("Payment Mode = " + orderDetails.get(2));
     }
 
     @AfterMethod
-    public void closeBrowser(){
-        //BrowserActions.close();
+    public void tearDown(){
+        BrowserActions.close();
     }
 
 

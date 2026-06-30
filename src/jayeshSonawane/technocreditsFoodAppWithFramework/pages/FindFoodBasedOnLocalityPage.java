@@ -7,6 +7,11 @@ import org.openqa.selenium.support.ui.Select;
 
 public class FindFoodBasedOnLocalityPage extends BrowserActions {
 
+
+    public void waitForPageLoad() {
+        BrowserActions.visibilityOfElementLocated(By.id("search-filter"));
+    }
+
     public void waitForPageLoad(String restaurantName) {
         BrowserActions.visibilityOfElementLocated(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/child::span"));
     }
