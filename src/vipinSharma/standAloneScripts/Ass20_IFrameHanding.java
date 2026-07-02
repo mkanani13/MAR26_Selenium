@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Ass19_IFrameHanding {
+public class Ass20_IFrameHanding {
     WebDriver driver;
 
     @BeforeTest
