@@ -64,6 +64,8 @@ public class Assignment_7 {
         }else
             System.out.println("element is not checked");
 
+        driver.quit();
+
 
     }
 }
