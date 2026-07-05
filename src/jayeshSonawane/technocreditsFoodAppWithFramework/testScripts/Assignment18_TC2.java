@@ -1,13 +1,17 @@
 package jayeshSonawane.technocreditsFoodAppWithFramework.testScripts;
 
 import jayeshSonawane.technocreditsFoodAppWithFramework.base.BrowserActions;
-import jayeshSonawane.technocreditsFoodAppWithFramework.pages.AccessPage;
-import jayeshSonawane.technocreditsFoodAppWithFramework.pages.ChooseApplicationPage;
-import jayeshSonawane.technocreditsFoodAppWithFramework.pages.FindFoodBasedOnLocalityPage;
-import jayeshSonawane.technocreditsFoodAppWithFramework.pages.SignInPage;
+import jayeshSonawane.technocreditsFoodAppWithFramework.pages.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.NoSuchElementException;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Assignment18_TC2 {
 
@@ -35,8 +39,14 @@ public class Assignment18_TC2 {
         FindFoodBasedOnLocalityPage findFoodBasedOnLocalityPage = new FindFoodBasedOnLocalityPage();
         findFoodBasedOnLocalityPage.waitForPageLoad();
         findFoodBasedOnLocalityPage.selectLocalityFromDropdown("Baner");
-        // Identify the first restaurant in the list that has at least one available dish (non-zero dish count) within the selected locality (Balance Brew Cafe).
-        // (//p[not(contains(text(),'0 dishes'))][1])[1]/preceding-sibling::h3/parent::div/parent::div/following-sibling::a
+        System.out.println("STEP - Identify the first restaurant in the list that has at least one available dish (non-zero dish count) within the selected locality (Balance Brew Cafe)");
+        String restaurantName = findFoodBasedOnLocalityPage.selectFirstRestaurantWithAvailability();
+        String expectedRestaurantName = "Balance Brew Cafe";
+        Assert.assertEquals(restaurantName, expectedRestaurantName);
+
+        FindFoodMenuPage  findFoodMenuPage = new FindFoodMenuPage();
+        findFoodMenuPage.waitForPageLoad();
+        findFoodMenuPage.addInStockItemIntoCart(2);
     }
 
     @AfterMethod
