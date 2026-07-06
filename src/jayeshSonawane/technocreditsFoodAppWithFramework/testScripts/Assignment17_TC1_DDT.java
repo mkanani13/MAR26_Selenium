@@ -2,7 +2,7 @@ package jayeshSonawane.technocreditsFoodAppWithFramework.testScripts;
 
 import jayeshSonawane.technocreditsFoodAppWithFramework.base.BrowserActions;
 import jayeshSonawane.technocreditsFoodAppWithFramework.pages.*;
-import jayeshSonawane.technocreditsFoodAppWithFramework.utility.MyExcelOperationsUtility;
+import jayeshSonawane.technocreditsFoodAppWithFramework.utility.ExcelOperationsUtility;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -10,8 +10,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +36,7 @@ public class Assignment17_TC1_DDT {
     // DataProvider always returns 2D Array
     @DataProvider(name = "testData")
     public static Object[][] getData() throws IOException {
-        List<Map<String, String>> testData = MyExcelOperationsUtility.readExcel("D:\\Work\\Automation Testing (Java+Selenium)\\Intelli_J\\MAR26_Selenium\\src\\jayeshSonawane\\technocreditsFoodAppWithFramework\\testData\\mar26-data-driven.xlsx","Sheet1");
+        List<Map<String, String>> testData = ExcelOperationsUtility.readExcel("D:\\Work\\Automation Testing (Java+Selenium)\\Intelli_J\\MAR26_Selenium\\src\\jayeshSonawane\\technocreditsFoodAppWithFramework\\testData\\mar26-data-driven.xlsx","Sheet1");
         /* testData
                  |<------------------------------------------------------------Column1---------------------------------------------------------------------------------------------------->|
         Row 1 = [{restaurantname=Balance Brew Cafe, qnty=5, cashOnDelivery=true, locality=Baner, fooditem=Cold Brew Coffee, placeOrderAddress=Aundh, paymentMethod=UPI, mobileNo=8950714840},

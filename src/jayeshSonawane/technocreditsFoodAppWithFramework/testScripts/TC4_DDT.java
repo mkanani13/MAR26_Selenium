@@ -1,6 +1,6 @@
 package jayeshSonawane.technocreditsFoodAppWithFramework.testScripts;
 
-import jayeshSonawane.technocreditsFoodAppWithFramework.utility.ExcelOperationsUtility;
+import jayeshSonawane.technocreditsFoodAppWithoutFramework.utility.ExcelOperationsUtility;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;

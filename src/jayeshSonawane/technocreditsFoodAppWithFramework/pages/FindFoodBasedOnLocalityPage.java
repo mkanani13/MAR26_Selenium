@@ -37,7 +37,6 @@ public class FindFoodBasedOnLocalityPage extends BrowserActions {
 
     public String selectFirstRestaurantWithAvailability(){
         String restaurantXpath = "(//p[1][not(contains(text(), '0 dishes'))]/following::a[1])[1]/preceding-sibling::div//h3";
-        System.out.println("-------1-----------");
         String splitBy = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(restaurantXpath + "/span"))).getText();
         String restaurantName = driver.findElement(By.xpath(restaurantXpath)).getText().split(splitBy)[0].trim();
         driver.findElement(By.xpath("(//p[1][not(contains(text(), '0 dishes'))]/following::a[1])[1]")).click();

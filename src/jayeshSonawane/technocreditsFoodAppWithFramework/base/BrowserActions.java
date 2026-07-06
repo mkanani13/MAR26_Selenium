@@ -1,7 +1,9 @@
 package jayeshSonawane.technocreditsFoodAppWithFramework.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import technocredits.customexception.BrowserInvalidException;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BrowserActions {
 
@@ -56,6 +59,23 @@ public class BrowserActions {
 
     public static String visibilityOfElementLocatedText(By by){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by)).getText();
+    }
+
+    public static JavascriptExecutor scrollTo(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].scrollIntoView(true)",element);
+
+        return js;
+    }
+
+    public static void printElement(List<WebElement> element){
+        if(!element.isEmpty()){
+            for (WebElement e : element){
+                System.out.println("Selected Option is : " + e.getText());
+            }
+        }else {
+            System.out.println("No Option Selected");
+        }
     }
 
     public static void close(){

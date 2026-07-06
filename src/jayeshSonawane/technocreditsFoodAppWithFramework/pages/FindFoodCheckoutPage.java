@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 public class FindFoodCheckoutPage extends BrowserActions {
 
-    public final String CONTINUETOPAYMENTBUTTONXPATH = "//button[@id='co-continue']";
+    private final String CONTINUETOPAYMENTBUTTONXPATH = "//button[@id='co-continue']";
 
     public void waitForPageLoad(){
         BrowserActions.visibilityOfElementLocated(By.xpath(CONTINUETOPAYMENTBUTTONXPATH));
