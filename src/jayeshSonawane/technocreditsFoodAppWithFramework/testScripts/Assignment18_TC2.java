@@ -47,6 +47,7 @@ public class Assignment18_TC2 {
         FindFoodMenuPage  findFoodMenuPage = new FindFoodMenuPage();
         findFoodMenuPage.waitForPageLoad();
         findFoodMenuPage.addInStockItemIntoCart(2);
+
     }
 
     @AfterMethod
