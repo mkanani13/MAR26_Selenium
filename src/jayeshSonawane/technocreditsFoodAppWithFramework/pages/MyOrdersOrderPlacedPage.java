@@ -24,6 +24,10 @@ public class MyOrdersOrderPlacedPage extends BrowserActions {
         }
     }
 
+    public String getRestaurantName(){
+        return driver.findElement(By.xpath("//div[@id='success-host']//strong")).getText();
+    }
+
     public List<String> getOrderDetails(){
         List<String> orderDetails = new ArrayList<>();
 

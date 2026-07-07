@@ -12,14 +12,19 @@ public class FindFoodCheckoutPage extends BrowserActions {
     }
 
     public boolean verifyRestaurant(String restaurantName){
-        //return restaurantName.equals(driver.findElement(By.xpath("//strong")).getText());
-        String actualRestaurantName = driver.findElement(By.xpath("//strong")).getText();
-        System.out.println("Restaurant Name: " + actualRestaurantName);
-        return actualRestaurantName.equals(restaurantName);
+        return driver.findElement(By.xpath("//strong")).getText().equals(restaurantName);
     }
 
     public double getSubTotal(){
         return Double.parseDouble(driver.findElement(By.xpath("//span[@data-testid='checkout-subtotal']")).getText().substring(1));
+    }
+
+    public double getDiscount(){
+        return Double.parseDouble(driver.findElement(By.xpath("//span[@data-testid='checkout-discount']")).getText().substring(2));
+    }
+
+    public double getPayable(){
+        return Double.parseDouble(driver.findElement(By.xpath("//span[@data-testid='checkout-payable']")).getText().substring(1));
     }
 
     public void enterDeliveryDetails(String deliveryAddress, String contactMobile){
