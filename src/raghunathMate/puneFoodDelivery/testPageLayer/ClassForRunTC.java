@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import puneFoodDelivery.pageLayer.FoodOrderPage;
-import puneFoodDelivery.pageLayer.LoginPage;
-import puneFoodDelivery.testBase.BrowserAction;
+import raghunathMate.puneFoodDelivery.pageLayer.FoodOrderPage;
+import raghunathMate.puneFoodDelivery.pageLayer.LoginPage;
+import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
 
 import java.util.Set;
 

@@ -4,8 +4,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import puneFoodDelivery.pageLayer.*;
-import puneFoodDelivery.testBase.BrowserAction;
+import raghunathMate.puneFoodDelivery.pageLayer.*;
+import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
 
 public class TC_1_Assi_17 {
 
