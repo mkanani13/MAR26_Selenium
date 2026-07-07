@@ -1,4 +1,4 @@
-package automationScript;
+package riteshMali;
 
 //Automate the following scenario using Selenium WebDriver in Java:
 //
@@ -10,7 +10,7 @@ package automationScript;
 //Alert message should pop-up "You must be TechnoCredits student!!"
 
 
-import CustomeException.BrowserInvalid;
+//import CustomeException.BrowserInvalid;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -68,7 +68,7 @@ public class Assignment4 {
                    driver = new EdgeDriver();
                    break;
                default:
-                   throw new BrowserInvalid("Given Browser not supported");
+                   throw new RuntimeException("Given Browser not supported");
            }
            driver.get(url);
            driver.manage().window().maximize();

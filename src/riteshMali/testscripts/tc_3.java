@@ -1,17 +1,13 @@
 package riteshMali.testscripts;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import riteshMali.base.BrowserActions;
 import riteshMali.pages.*;
 import riteshMali.utility.DateTimeUtility;
 
-import java.util.Map;
-
-public class tc_2 {
+public class tc_3 {
 
     @BeforeClass
     void startup() {
@@ -122,31 +118,11 @@ public class tc_2 {
         softAssert.assertEquals(orderSummaryPage_paymentMethod, "UPI");
         softAssert.assertAll();
 
-        System.out.println("STEP - Click on View my orders");
-        orderSuccessPage.clickOnViewMyOrder();
+        System.out.println("Step - Click on track order");
+        orderSuccessPage.clickOnTrackOrder();
 
-        MyOrderPage myOrderPage = new MyOrderPage();
-        myOrderPage.waitForPageLoad();
-        System.out.println("Step - Search Order");
-        myOrderPage.searchOrderWithExactId(orderSummaryPage_orderId);
-
-        System.out.println("Step - get Order details from my order table");
-        Map<String, String> orderDetailsMap = myOrderPage.getOrderDetails();
-
-        System.out.println("Verify- verify order details");
-        softAssert.assertEquals(orderDetailsMap.get("Order #"), orderSummaryPage_orderId);
-        softAssert.assertEquals(orderDetailsMap.get("Date"), expectetOrderDateTime);
-        softAssert.assertEquals(orderDetailsMap.get("Restaurant"), restaurantName);
-        softAssert.assertEquals(orderDetailsMap.get("Total"), subTotalText);
-        softAssert.assertTrue(myOrderPage.getOrderStatus().contains(orderDetailsMap.get("Status")));
-        softAssert.assertAll();
-
-
-
-//    @AfterClass
-//    void tearDown(){
-//        BrowserActions.quitBrowser();
-//    }
+        OrderTrackSummary orderTrackSummary = new OrderTrackSummary();
+        orderTrackSummary.switchToTrackOrderDetails();
 
     }
 }
