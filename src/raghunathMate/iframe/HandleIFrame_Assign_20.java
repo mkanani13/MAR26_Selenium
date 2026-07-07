@@ -1,4 +1,4 @@
-package iframe;
+package raghunathMate.iframe;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testBase.BrowserAction;
+import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
 
 import java.time.Duration;
 
@@ -20,7 +20,7 @@ public class HandleIFrame_Assign_20 extends BrowserAction {
     }
 
     @Test
-    public void handleIFrame_Ass_20() throws InterruptedException {
+    public void handleIFrame_Ass_20()  {
 
         System.out.println("Step - 2.Switch to the I am iFrame1 frame.");
         //Thread.sleep(5000);
