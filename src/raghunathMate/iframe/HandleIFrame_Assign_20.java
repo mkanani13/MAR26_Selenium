@@ -1,4 +1,4 @@
-package raghunathMate.iframe;
+package iframe;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
+import testBase.BrowserAction;
 
 import java.time.Duration;
 
