@@ -1,6 +1,5 @@
 package vishwajeetLoni.base;
 
-<<<<<<< Assignnment17_18_19_Vishwajeet
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import vishwajeetLoni.customExceptions.BrowserNotSupportedException;
 import java.time.Duration;
 import java.util.List;
-=======
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -21,15 +19,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import vishwajeetLoni.customExceptions.BrowserNotSupportedException;
 import java.time.Duration;
->>>>>>> main
 
 public class ActionOnBrowser {
     protected static WebDriver driver = null;
     protected static WebDriverWait wait;  // declaing variable for wait
-<<<<<<< Assignnment17_18_19_Vishwajeet
     protected static Actions actions;
-=======
->>>>>>> main
 
     public static WebDriver start(){  // used for launching Automation by Krishna site each time
         start("CHROME","http://automationbykrishna.com");  // calling the overloaded method from below and launching automation by krishna when no parameters passed
@@ -65,10 +59,7 @@ public class ActionOnBrowser {
         driver.manage().window().maximize();
         // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-<<<<<<< Assignnment17_18_19_Vishwajeet
         actions = new Actions(driver);
-=======
->>>>>>> main
         return driver;
     }
 
@@ -76,7 +67,6 @@ public class ActionOnBrowser {
         driver.close();
     }
 
-<<<<<<< Assignnment17_18_19_Vishwajeet
     protected WebElement waitForElementVisibility(By by){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
@@ -111,6 +101,4 @@ public class ActionOnBrowser {
         return null;
     }
 
-=======
->>>>>>> main
 }
