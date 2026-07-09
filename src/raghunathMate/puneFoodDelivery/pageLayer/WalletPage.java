@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
-import puneFoodDelivery.testBase.BrowserAction;
+import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
 
 import java.time.Duration;
 

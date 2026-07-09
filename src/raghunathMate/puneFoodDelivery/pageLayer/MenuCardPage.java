@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import puneFoodDelivery.testBase.BrowserAction;
+import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
 
 public class MenuCardPage extends BrowserAction {
     private WebElement checkoutButton;

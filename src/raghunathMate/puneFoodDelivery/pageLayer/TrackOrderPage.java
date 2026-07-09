@@ -3,7 +3,7 @@ package raghunathMate.puneFoodDelivery.pageLayer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import puneFoodDelivery.testBase.BrowserAction;
+import raghunathMate.puneFoodDelivery.testBase.BrowserAction;
 
 import java.util.Set;
 
