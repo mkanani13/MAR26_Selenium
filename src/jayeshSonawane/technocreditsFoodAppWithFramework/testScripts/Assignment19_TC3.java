@@ -30,13 +30,13 @@ public class Assignment19_TC3 {
     }
 
     @Test
-    public void verifyOrderDelivered(){
+    public void verifyOrderDelivered() {
 
         FindFoodPage findFoodPage = new FindFoodPage();
         findFoodPage.waitForPageLoad();
 
         System.out.println("STEP - Verify that the logged-in user's name is displayed in the top navigation bar.");
-        MyProfilePage  myProfilePage = new MyProfilePage();
+        MyProfilePage myProfilePage = new MyProfilePage();
         myProfilePage.clickOnMyProfilePage();
         myProfilePage.waitforPageLoad();
         String expectedUserName = myProfilePage.getUserName();
@@ -77,11 +77,11 @@ public class Assignment19_TC3 {
         double subTotalFindFoodCheckoutPage = findFoodCheckoutPage.getSubTotal();
         double discountFindFoodCheckoutPage = findFoodCheckoutPage.getDiscount();
         double payableFindFoodCheckoutPage = findFoodCheckoutPage.getPayable();
-        Assert.assertEquals(subTotalFindFoodCheckoutPage, subTotalFindFoodMenuPage,"findFoodCheckoutPage - Verify SubTotal");
-        Assert.assertEquals(discountFindFoodCheckoutPage, discountFindFoodMenuPage,"findFoodCheckoutPage - Verify Discount");
+        Assert.assertEquals(subTotalFindFoodCheckoutPage, subTotalFindFoodMenuPage, "findFoodCheckoutPage - Verify SubTotal");
+        Assert.assertEquals(discountFindFoodCheckoutPage, discountFindFoodMenuPage, "findFoodCheckoutPage - Verify Discount");
         Assert.assertEquals(payableFindFoodCheckoutPage, payableFindFoodMenuPage, "findFoodCheckoutPage - Verify Payable");
         System.out.println("STEP - Enter Valid Delivery Address and Contact Mobile Number");
-        findFoodCheckoutPage.enterDeliveryDetails("Wakad","9730287487");
+        findFoodCheckoutPage.enterDeliveryDetails("Wakad", "9730287487");
         System.out.println("STEP - Click on Continue to Payment");
         findFoodCheckoutPage.clickOnContinueToPaymentButton();
 
@@ -92,8 +92,8 @@ public class Assignment19_TC3 {
         double subTotalFindFoodPaymentPage = findFoodPaymentPage.getSubTotal();
         double discountFindFoodPaymentPage = findFoodPaymentPage.getDiscount();
         double payableFindFoodPaymentPage = findFoodPaymentPage.getPayable();
-        Assert.assertEquals(subTotalFindFoodPaymentPage, subTotalFindFoodCheckoutPage,"findFoodPaymentPage - Verify SubTotal");
-        Assert.assertEquals(discountFindFoodPaymentPage, discountFindFoodCheckoutPage,"findFoodPaymentPage - Verify Discount");
+        Assert.assertEquals(subTotalFindFoodPaymentPage, subTotalFindFoodCheckoutPage, "findFoodPaymentPage - Verify SubTotal");
+        Assert.assertEquals(discountFindFoodPaymentPage, discountFindFoodCheckoutPage, "findFoodPaymentPage - Verify Discount");
         Assert.assertEquals(payableFindFoodPaymentPage, payableFindFoodCheckoutPage, "findFoodPaymentPage - Verify Payable");
         System.out.println("STEP - Verify that an Alert message pop-up is displayed showing 'Please confirm the captcha before paying' in red background text in the page.");
         findFoodPaymentPage.clickOnPlaceOrderButton();
@@ -112,14 +112,14 @@ public class Assignment19_TC3 {
         if (paymentMethod.equalsIgnoreCase("UPI")) {
             Assert.assertTrue(findFoodPaymentPage.isPaymentMethodUpiEnabled(), "UPI Payment Method Not Available");
             findFoodPaymentPage.clickOnPlaceOrderButton();
-            Assert.assertTrue(findFoodPaymentPage.isUpiErrorDisplayed(),  "Verify Upi Error");
+            Assert.assertTrue(findFoodPaymentPage.isUpiErrorDisplayed(), "Verify Upi Error");
             System.out.println("STEP - Enter a valid UPI ID in the payment field.");
             findFoodPaymentPage.enterUpiId(upiId);
-        }else if (paymentMethod.equalsIgnoreCase("Card")) {
+        } else if (paymentMethod.equalsIgnoreCase("Card")) {
             findFoodPaymentPage.clickPaymentMethodCard();
             Assert.assertTrue(findFoodPaymentPage.paymentMethodCardEnabled(), "Card Payment Method Not Available");
             // Write card steps
-        }else if (paymentMethod.equalsIgnoreCase("Net Banking")) {
+        } else if (paymentMethod.equalsIgnoreCase("Net Banking")) {
             findFoodPaymentPage.clickPaymentMethodNetBanking();
             Assert.assertTrue(findFoodPaymentPage.paymentMethodNetBankingEnabled(), "Net Banking Payment Method Not Available");
             // Write Net Banking Steps
@@ -141,12 +141,40 @@ public class Assignment19_TC3 {
         System.out.println("STEP - Verify that the Order Placed screen is displayed");
         MyOrdersOrderPlacedPage myOrdersOrderPlacedPage = new MyOrdersOrderPlacedPage();
         myOrdersOrderPlacedPage.waitForPageLoad();
+        System.out.println("STEP - Verify that the Order Placed screen is displayed");
         Assert.assertTrue(myOrdersOrderPlacedPage.isOrderPlaced());
-        Assert.assertEquals(myOrdersOrderPlacedPage.getRestaurantName(), restaurantNameFindFoodBasedOnLocalityPage);
+        System.out.println("STEP - Verify Restaurant Details");
+        Assert.assertEquals(myOrdersOrderPlacedPage.getRestaurantName(), restaurantNameFindFoodBasedOnLocalityPage, "myOrdersOrderPlacedPage - Verify Restaurant Name");
+        System.out.println("STEP - Verify Order Number Present");
+        Assert.assertTrue(myOrdersOrderPlacedPage.isOrderNumberPresent(), "myOrdersOrderPlacedPage - Verify Order Number Present");
+        System.out.println("STEP - Verify Amound paid Present");
+        Assert.assertTrue(myOrdersOrderPlacedPage.isAmountPaidPresent(), "myOrdersOrderPlacedPage - Verify Amount paid Present");
+        System.out.println("STEP - Verify Paid via Present");
+        Assert.assertTrue(myOrdersOrderPlacedPage.isPaidViaPresent(), "myOrdersOrderPlacedPage - Verify Paid via Present");
         List<String> orderDetails = myOrdersOrderPlacedPage.getOrderDetails();
         System.out.println("Order Number = " + orderDetails.get(0));
         System.out.println("Amount Paid = " + orderDetails.get(1));
         System.out.println("Paid via = " + orderDetails.get(2));
+        System.out.println("Click on Track Order");
+        myOrdersOrderPlacedPage.clickOnTrackOrderButton();
+        System.out.println("Switch to Track Order Window");
+        myOrdersOrderPlacedPage.switchToTrackOrderPageWindow();
+
+        System.out.println("STEP - Verify that the Order number of the order placed in the 'Track Order' tab/section is present in the Order# column of the 'View my orders' tab/section.");
+        TrackOrderPage trackOrderPage = new TrackOrderPage();
+        trackOrderPage.waitForPageLoad();
+        String trackOrderPageOrderNumber = trackOrderPage.getOrderNumber();
+        System.out.println("STEP - Verify that the Amount paid displayed in the 'Track Order' tab/section is same as the price displayed under the Total column for the placed 'Order number' in the 'View my orders' tab/section.");
+        double trackOrderPageTotalPrice = trackOrderPage.getTotalPrice();
+        trackOrderPage.switchToMyOrdersOrderPlacedPage();
+        myOrdersOrderPlacedPage.waitForPageLoad();
+        System.out.println("STEP - Click on 'View my orders' section/tab.");
+        myOrdersOrderPlacedPage.clickOnViewMyOrdersButton();
+
+        MyOrdersOrderListPage myOrdersOrderListPage = new MyOrdersOrderListPage();
+        myOrdersOrderListPage.waitForPageLoad();
+        Assert.assertTrue(myOrdersOrderListPage.isOrderNumberPresent(trackOrderPageOrderNumber), "myOrdersOrderListPage - Verify Order Number Present");
+        Assert.assertEquals(myOrdersOrderListPage.getOrderTotalPrice(), trackOrderPageTotalPrice, "myOrdersOrderListPage - Verify Total Price");
     }
 
     @AfterMethod

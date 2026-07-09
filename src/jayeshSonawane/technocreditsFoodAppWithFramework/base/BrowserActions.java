@@ -13,6 +13,7 @@ import technocredits.customexception.BrowserInvalidException;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 public class BrowserActions {
 
@@ -76,6 +77,9 @@ public class BrowserActions {
         }else {
             System.out.println("No Option Selected");
         }
+    }
+    public static Set<String> getWindowHandles(){
+        return driver.getWindowHandles();
     }
 
     public static void close(){
