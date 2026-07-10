@@ -89,7 +89,7 @@ public class Tc2_1 {
 
         System.out.println("STEP - Click on Pay & Place Order");
         paymentPage.clickOnPayPlaceOrderBtn();
-//
+
         System.out.println("VERIFY - Confirm the capta error notification displayed");
         boolean captaFlag = paymentPage.isErrorCaptaDisplayed();
         Assert.assertTrue(captaFlag);
