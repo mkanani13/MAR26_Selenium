@@ -9,25 +9,25 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Assignment17_TC1 {
+public class Assignment17_TC1 extends TestBase{
 
-    @BeforeMethod
-    public void setup(){
-        BrowserActions.start("http://34.66.197.232/#/access");
-
-        AccessPage accessPage = new AccessPage();
-        accessPage.waitForPageLoad();
-
-        accessPage.continueToLogin("F248JK5SK6", "B6FVNRUZ");
-
-        ChooseApplicationPage chooseApplicationPage = new ChooseApplicationPage();
-        chooseApplicationPage.waitForPageLoad();
-        chooseApplicationPage.clickOnSignIntoFoodApp();
-
-        SignInPage signInPage = new SignInPage();
-        signInPage.waitForPageLoad();
-        signInPage.doSignIn("user@technocredits.com", "User@123");
-    }
+//    @BeforeMethod
+//    public void setup(){
+//        BrowserActions.start("http://34.66.197.232/#/access");
+//
+//        AccessPage accessPage = new AccessPage();
+//        accessPage.waitForPageLoad();
+//
+//        accessPage.continueToLogin("F248JK5SK6", "B6FVNRUZ");
+//
+//        ChooseApplicationPage chooseApplicationPage = new ChooseApplicationPage();
+//        chooseApplicationPage.waitForPageLoad();
+//        chooseApplicationPage.clickOnSignIntoFoodApp();
+//
+//        SignInPage signInPage = new SignInPage();
+//        signInPage.waitForPageLoad();
+//        signInPage.doSignIn("user@technocredits.com", "User@123");
+//    }
 
     @Test
     public void verifyPlaceOrderFeature(){
@@ -97,10 +97,10 @@ public class Assignment17_TC1 {
         System.out.println("Payment Mode = " + orderDetails.get(2));
     }
 
-    @AfterMethod
-    public void tearDown(){
-        BrowserActions.close();
-    }
+//    @AfterMethod
+//    public void tearDown(){
+//        BrowserActions.close();
+//    }
 
 
 }

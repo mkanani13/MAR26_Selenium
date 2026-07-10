@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Assignment19_TC3 extends TestBase{
+public class Assignment19_TC3_PropertyFile extends TestBase{
 
 //    @BeforeMethod
 //    public void setup() {

@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TC4_DDT {
+public class TC4_DDT extends TestBase{
 
-    @BeforeMethod
-    public void setup() {
-        BrowserActions.start("http://34.66.197.232/#/access");
-        LoginPage loginPage = new LoginPage();
-        loginPage.doLogin();
-    }
+//    @BeforeMethod
+//    public void setup() {
+//        BrowserActions.start("http://34.66.197.232/#/access");
+//        LoginPage loginPage = new LoginPage();
+//        loginPage.doLogin();
+//    }
 
     @DataProvider(name = "testData")
     public Object[][] getData() throws IOException {
@@ -178,6 +178,5 @@ public class TC4_DDT {
         System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
         Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
     }
-
 
 }

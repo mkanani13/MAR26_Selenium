@@ -7,25 +7,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Assignment18_TC2_DDT {
+public class Assignment18_TC2_DDT extends TestBase{
 
-    @BeforeMethod
-    public void setup(){
-        BrowserActions.start("http://34.66.197.232/#/access");
-
-        AccessPage accessPage = new AccessPage();
-        accessPage.waitForPageLoad();
-
-        accessPage.continueToLogin("F248JK5SK6", "B6FVNRUZ");
-
-        ChooseApplicationPage chooseApplicationPage = new ChooseApplicationPage();
-        chooseApplicationPage.waitForPageLoad();
-        chooseApplicationPage.clickOnSignIntoFoodApp();
-
-        SignInPage signInPage = new SignInPage();
-        signInPage.waitForPageLoad();
-        signInPage.doSignIn("user@technocredits.com", "User@123");
-    }
+//    @BeforeMethod
+//    public void setup(){
+//        BrowserActions.start("http://34.66.197.232/#/access");
+//
+//        AccessPage accessPage = new AccessPage();
+//        accessPage.waitForPageLoad();
+//
+//        accessPage.continueToLogin("F248JK5SK6", "B6FVNRUZ");
+//
+//        ChooseApplicationPage chooseApplicationPage = new ChooseApplicationPage();
+//        chooseApplicationPage.waitForPageLoad();
+//        chooseApplicationPage.clickOnSignIntoFoodApp();
+//
+//        SignInPage signInPage = new SignInPage();
+//        signInPage.waitForPageLoad();
+//        signInPage.doSignIn("user@technocredits.com", "User@123");
+//    }
 
     @Test
     public void assignment18_TC2() {
@@ -44,8 +44,8 @@ public class Assignment18_TC2_DDT {
 
     }
 
-    @AfterMethod
-    public void tearDown(){
-        // BrowserActions.close();
-    }
+//    @AfterMethod
+//    public void tearDown(){
+//        // BrowserActions.close();
+//    }
 }

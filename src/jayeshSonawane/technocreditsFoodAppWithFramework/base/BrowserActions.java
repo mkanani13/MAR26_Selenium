@@ -1,9 +1,7 @@
 package jayeshSonawane.technocreditsFoodAppWithFramework.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -11,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import technocredits.customexception.BrowserInvalidException;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -80,6 +80,16 @@ public class BrowserActions {
     }
     public static Set<String> getWindowHandles(){
         return driver.getWindowHandles();
+    }
+
+    public static void takeScreenshot(String fileName){
+        TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
+        File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(srcFile, new File("src/jayeshSonawane/technocreditsFoodAppWithFramework/screenshots/"+fileName+".png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void close(){
