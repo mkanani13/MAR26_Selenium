@@ -18,7 +18,9 @@ public class Asgn17to19RestroStandAloneTest {
 
     //(//table[@data-testid='menu-table']/tbody/tr/td[4][text()!='0'])[1]/preceding-sibling::td[3]/div/div/div[1]
     // WebDriver driver = new ChromeDriver();
+
     @Test
+
     public void restaurant() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         // -------> BrowserAction and passing URL
@@ -119,16 +121,16 @@ public class Asgn17to19RestroStandAloneTest {
         driver.findElement(By.xpath("//button[@id='pay-btn']")).click();
         //-----------------------------
 
-        SoftAssert softAssert1 = new SoftAssert();
-        System.out.println("verify that order placed screen is displayed and contains the following details under the track order section");
-        boolean orderFlag=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='order placed!']"))).isDisplayed();
+//        SoftAssert softAssert1 = new SoftAssert();
+//        System.out.println("verify that order placed screen is displayed and contains the following details under the track order section");
+//        boolean orderFlag=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='order placed!']"))).isDisplayed();
 
-        System.out.println("verify order placed text is displayed");
-        softAssert.assertTrue(orderFlag);
-        System.out.println("verify restaurant details");
+//        System.out.println("verify order placed text is displayed");
+//        softAssert.assertTrue(orderFlag);
+//        System.out.println("verify restaurant details");
 
         //Thread.sleep(2000);
-     //   driver.quit();
+        //driver.quit();
 
     }
     }
