@@ -159,7 +159,5 @@ public class Tc3 {
         System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
         System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
         Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
-
-
     }
 }
