@@ -1,6 +1,6 @@
 package jayeshSonawane.StaleElementReferenceException;
 
-import jayeshSonawane.technocreditsFoodAppWithFramework.base.BrowserActions;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.base.BrowserActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
