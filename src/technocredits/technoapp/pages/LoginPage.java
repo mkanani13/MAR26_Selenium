@@ -36,9 +36,9 @@ public class LoginPage extends BrowserActions {
 
         System.out.println("STEP - Enter Access code");
         setText(accessCodeElement, "7MNT2R2F", false);
-
+        
         System.out.println("STEP - Click on continue button");
-        clickOnElement(continueBtnElement, false);
+        driver.findElement(By.xpath("//button[text()= 'Continue']")).click();
 
         System.out.println("STEP - Click on Sign In Food link");
         clickOnElement(signInFoodElement, true);
