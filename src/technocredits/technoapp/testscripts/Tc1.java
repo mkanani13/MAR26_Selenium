@@ -18,7 +18,7 @@ public class Tc1 {
 
     @BeforeMethod
     public void setup(){
-        BrowserActions.start("http://34.173.201.53/access#/login");
+        BrowserActions.start("http://34.66.197.232/#/access");
         LoginPage loginPage = new LoginPage();
         loginPage.doLogin();
     }

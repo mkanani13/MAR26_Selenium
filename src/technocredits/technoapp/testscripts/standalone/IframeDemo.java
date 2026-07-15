@@ -20,7 +20,7 @@ public class IframeDemo {
     }
 
     @Test
-    public void frameElementTest(){
+    public void frameElementTest() throws InterruptedException {
         System.out.println("STEP - navigate to Iframe menu");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='iFrame']"))).click();
@@ -36,12 +36,24 @@ public class IframeDemo {
         driver.switchTo().frame(frameElement);
 
         System.out.println("STEP - Click on click me button");
-        driver.findElement(By.xpath("//button[text()='CLick Me']")).click();
+        WebElement clickMeElement = driver.findElement(By.xpath("//button[text()='CLick Me']"));
+        clickMeElement.click();
 
         driver.switchTo().defaultContent();
 
         System.out.println("STEP - Get the message text");
         String text =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@id='message']"))).getText();
         System.out.println(text);
+
+        driver.navigate().refresh(); //// activity which refresh the dom
+        Thread.sleep(3000);
+        System.out.println("Switch to Iframe");
+        //frameElement = driver.findElement(By.xpath("//iframe[@src='iframe1.php']"));
+        driver.switchTo().frame(frameElement);
+        System.out.println("-----" + driver.getTitle());
+
+        Thread.sleep(2000);
+        System.out.println("STEP - Click on click me button");
+        clickMeElement.click();
     }
 }
