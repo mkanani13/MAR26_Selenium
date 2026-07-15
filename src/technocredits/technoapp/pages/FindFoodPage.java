@@ -3,6 +3,10 @@ package technocredits.technoapp.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import technocredits.technoapp.base.BrowserActions;
@@ -10,14 +14,28 @@ import technocredits.technoapp.base.BrowserActions;
 import java.util.*;
 
 public class FindFoodPage extends BrowserActions {
-    private final String LOCALITYFILTER_XPATH = "//select[@data-testid='locality-dropdown']";
+    @FindBy(xpath = "//select[@data-testid='locality-dropdown']")
+    WebElement locationDD;
+
+    @FindBy(xpath = "//div[@id='restaurants-grid']/div//p")
+    List<WebElement> listOfRestLoc;
+
+//    @FindAll({
+//            @FindBy(xpath = "//div[@id='restaurants-grid']/div//p"),
+//            @FindBy(className = "abc")
+//    })
+//    List<WebElement> listOfRestLoc1;
+
+    public FindFoodPage(){
+        PageFactory.initElements(driver, this);
+    }
 
     public void waitForPageLoad(){
-        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@id='restaurants-grid']/div"),1));
+        //wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@id='restaurants-grid']/div"),1));
+        waitForNumberOfElementsToBeMoreThan(By.xpath("//div[@id='restaurants-grid']/div"), 1);
     }
 
     public Set<String> getLocationsFromLocationDropdown(){
-        WebElement locationDD = driver.findElement(By.xpath(LOCALITYFILTER_XPATH));
         Select locationSelect = new Select(locationDD);
         Set<String> listOptionsText = new LinkedHashSet<>();
 
@@ -47,7 +65,6 @@ public class FindFoodPage extends BrowserActions {
     }
 
     public void setLocationInDropdown(String locationText){
-        WebElement locationDD = driver.findElement(By.xpath(LOCALITYFILTER_XPATH));
         Select locationSelect = new Select(locationDD);
         locationSelect.selectByVisibleText(locationText);
     }
@@ -88,7 +105,7 @@ public class FindFoodPage extends BrowserActions {
     }
 
     public void clickOnViewOrder(String restaurantName){
-        WebElement viewOrderLink = driver.findElement(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/following::a[1]"));
-        viewOrderLink.click();
+        //WebElement viewOrderLink = driver.findElement(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/following::a[1]"));
+        clickOnElement(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/following::a[1]"),false);
     }
 }
