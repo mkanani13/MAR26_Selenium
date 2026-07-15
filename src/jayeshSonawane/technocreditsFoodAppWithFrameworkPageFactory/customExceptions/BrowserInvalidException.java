@@ -1,4 +1,4 @@
-package jayeshSonawane.customExceptions;
+package jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.customExceptions;
 
 public class BrowserInvalidException extends RuntimeException{
 

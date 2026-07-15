@@ -1,5 +1,6 @@
 package jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.base;
 
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.customExceptions.BrowserInvalidException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +8,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import technocredits.customexception.BrowserInvalidException;
 
 import java.io.File;
 import java.io.IOException;
