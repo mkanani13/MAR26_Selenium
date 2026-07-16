@@ -67,6 +67,13 @@ public class BrowserActions {
         return e.getText();
     }
 
+    protected static String getTextOfElement(By by, Boolean isWaitRequired){
+        if(isWaitRequired){
+            waitUntilElementIsVisible(by);
+        }
+        return getElement(by).getText();
+    }
+
     protected static String getAttributeFromElement(WebElement e, String attribute, Boolean isWaitRequired){
         if(isWaitRequired){
             waitUntilElementIsVisible(e);
@@ -76,6 +83,10 @@ public class BrowserActions {
 
     protected static void waitUntilElementIsVisible(WebElement e){
         wait.until(ExpectedConditions.visibilityOf(e));
+    }
+
+    protected static void waitUntilElementIsVisible(By by){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     protected static void waitUntilElementIsClickable(WebElement e){

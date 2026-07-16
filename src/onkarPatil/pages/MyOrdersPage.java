@@ -2,43 +2,54 @@ package onkarPatil.pages;
 
 import onkarPatil.base.BrowserActions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Arrays;
 
 public class MyOrdersPage extends BrowserActions {
 
-    private static String FIRST_ORDER_LOCATOR = "(//td[contains(@data-testid,'order-number')])[1]";
-    private static String FIRST_ORDER_AMOUNT_LOCATOR = "//tbody[@data-testid='orders-tbody']/tr[1]/td[6]";
+    public MyOrdersPage(){
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(xpath = "(//td[contains(@data-testid,'order-number')])[1]")
+    WebElement firstOrderElement;
+
+    @FindBy(xpath = "//tbody[@data-testid='orders-tbody']/tr[1]/td[6]")
+    WebElement firstOrderAmtLocator;
+
 
     public void waitForPageLoad(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(FIRST_ORDER_LOCATOR)));
+        waitUntilElementIsClickable(firstOrderElement);
     }
 
     public String getFirstOrderId(){
-        return driver.findElement(By.xpath(FIRST_ORDER_LOCATOR)).getText();
+        return getTextOfElement(firstOrderElement, false);
     }
 
     public double getAmtDisplayedForFirstOrder(){
-        String amtForFirstOrder = driver.findElement(By.xpath(FIRST_ORDER_AMOUNT_LOCATOR)).getText().substring(1);
+        String amtForFirstOrder = getTextOfElement(firstOrderAmtLocator, false).substring(1);
         return Double.parseDouble(amtForFirstOrder);
     }
 
     public String getDateForGivenOrder(String orderId){
-        return driver.findElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[1]")).getText();
+        return getTextOfElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[1]"), false);
     }
 
     public String getRestaurantNameForGiverOrder(String orderId){
-        String restaurantNameWithLocation = driver.findElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[2]")).getText();
+        String restaurantNameWithLocation = getTextOfElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[2]"), false);
         return restaurantNameWithLocation.split("\n")[0];
     }
 
     public Double getTotalAmtForGivenOrder(String orderId){
-        String amtText = driver.findElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[4]")).getText().substring(1);
+        String amtText = getTextOfElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[4]"), false).substring(1);
         return Double.parseDouble(amtText);
     }
 
     public String getStatusForGivenOrder(String orderId){
-        return driver.findElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[5]")).getText();
+        return getTextOfElement(By.xpath("//td[@data-testid='order-number-"+orderId+"']/following-sibling::td[5]"), false);
     }
 }
