@@ -1,6 +1,7 @@
 package onkarPatil.pages;
 
 import onkarPatil.base.BrowserActions;
+import onkarPatil.constants.ConstantPath;
 import onkarPatil.utility.PropFileOperations;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +34,7 @@ public class LoginPage extends BrowserActions {
     @FindBy(xpath = "//button[@data-testid='login-submit-btn']")
     WebElement loginSubmitBtnElement;
 
-    PropFileOperations propFile = new PropFileOperations("src/onkarPatil/resources/credentials.Properties");
+    PropFileOperations propFile = new PropFileOperations(ConstantPath.CREDENTIALS_FILE_PATH);
 
     public void doLogin(){
         setText(studentIdElement, propFile.getValue("STUDENT_ID"), true);
