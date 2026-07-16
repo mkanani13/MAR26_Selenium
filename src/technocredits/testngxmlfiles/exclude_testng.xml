@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="D:/Technocredits/MAR2026/repo/MAR26_Selenium/src/technocredits/technoapp/testscripts/demo/Tc1.java">
+        <groups>
+            <run>
+                <include name="regression"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="technocredits.technoapp.testscripts.demo.Tc1">
+                <methods>
+                    <exclude name="m3"></exclude>
+                </methods>
+            </class>
+
+            <class name="technocredits.technoapp.testscripts.demo.Tc2"/>
+        </classes>
+    </test>
+    
+</suite>

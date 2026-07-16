@@ -50,6 +50,30 @@ public class BrowserActions {
 		return driver; 
 	}
 
+    private WebElement getElement(By by, boolean isWaitRequired){
+        if(isWaitRequired)
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        return driver.findElement(by);
+    }
+
+    protected void clickOnElement(WebElement e, boolean isWaitRequired){
+        if(isWaitRequired)
+            wait.until(ExpectedConditions.elementToBeClickable(e));
+        e.click();
+    }
+
+    protected void clickOnElement(By by, boolean isWaitRequired){
+        WebElement e = getElement(by,isWaitRequired);
+        wait.until(ExpectedConditions.elementToBeClickable(e));
+        e.click();
+    }
+
+    protected void setText(WebElement e, String text, boolean isWaitRequired){
+        if(isWaitRequired)
+            wait.until(ExpectedConditions.visibilityOf(e));
+        e.sendKeys(text);
+    }
+
     protected WebElement waitForElementVisibility(By by){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
@@ -82,6 +106,10 @@ public class BrowserActions {
 
         }
         return null;
+    }
+
+    protected void waitForNumberOfElementsToBeMoreThan(By by, int num){
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(by,num));
     }
 
     public static void quitBrowser(){
