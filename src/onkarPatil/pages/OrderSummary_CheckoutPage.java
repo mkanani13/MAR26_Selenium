@@ -2,33 +2,48 @@ package onkarPatil.pages;
 
 import onkarPatil.base.BrowserActions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class OrderSummary_CheckoutPage extends BrowserActions {
 
-    private static String PAYABLE_AMT_LOCATOR = "//span[@data-testid='checkout-payable']";
-    private static String ADDRESS_ID = "co-address";
-    private static String MOBILE_ID = "co-mobile";
-    private static String CONTINUE_BTN_ID = "co-continue";
+    public OrderSummary_CheckoutPage(){
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(xpath = "//span[@data-testid='checkout-payable']")
+    WebElement paymentAmtElement;
+
+    @FindBy(id = "co-address")
+    WebElement addressElement;
+
+    @FindBy(id = "co-mobile")
+    WebElement mobileElement;
+
+    @FindBy(id = "co-continue")
+    WebElement continueBtnElement;
+
 
     public void waitForPageLoad(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PAYABLE_AMT_LOCATOR)));
+        waitUntilElementIsVisible(paymentAmtElement);
     }
 
     public double getPayableAmt(){
-        String payebleAmtText = driver.findElement(By.xpath(PAYABLE_AMT_LOCATOR)).getText().substring(1);
+        String payebleAmtText = getTextOfElement(paymentAmtElement, false).substring(1);
         return Double.parseDouble(payebleAmtText);
     }
 
     public void enterDeliveryAddress(String address){
-        driver.findElement(By.id(ADDRESS_ID)).sendKeys(address);
+        setText(addressElement, address, false);
     }
 
     public void enterMobileNumber(String mobileNum){
-        driver.findElement(By.id(MOBILE_ID)).sendKeys(mobileNum);
+        setText(mobileElement, mobileNum, false);
     }
 
     public void clickOnContinueOutBtn(){
-        driver.findElement(By.id(CONTINUE_BTN_ID)).click();
+        clickOnElement(continueBtnElement, false);
     }
 }
