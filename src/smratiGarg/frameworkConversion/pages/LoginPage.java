@@ -1,21 +1,11 @@
-package smratiGarg.refactorRestaurentApp.pages;
+package smratiGarg.frameworkConversion.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import smratiGarg.frameworkConversion.base.BrowserActions;
 
-import java.time.Duration;
+public class LoginPage extends BrowserActions {
 
-public class FoodLoginPage {
-    public void login(){
-        WebDriver driver = new ChromeDriver();
-        System.out.println("launch browser and navigate to site");
-        driver.manage().window().maximize();
-        driver.get("http://34.66.197.232/#/access");
-
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
+    public void doLogin(){
         // -------> LoginPage
         System.out.println("enter access id and password and click");
         driver.findElement(By.xpath("//input[@id='access-student-id']"))
@@ -42,5 +32,4 @@ public class FoodLoginPage {
                 .click();
 
     }
-
 }

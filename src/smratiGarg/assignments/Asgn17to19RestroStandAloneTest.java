@@ -20,7 +20,6 @@ public class Asgn17to19RestroStandAloneTest {
     // WebDriver driver = new ChromeDriver();
 
     @Test
-
     public void restaurant() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         // -------> BrowserAction and passing URL
