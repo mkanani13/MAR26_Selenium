@@ -1,40 +1,49 @@
 package onkarPatil.pages;
 
 import onkarPatil.base.BrowserActions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import onkarPatil.utility.PropFileOperations;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BrowserActions {
 
-    private static String STUDENT_ID_LOCATOR = "access-student-id";
-    private static String STUDENT_ACCESS_CODE_LOCATOR = "access-code";
-    private static String ACCESS_SUBMIT_BTN_LOCATOR = "//button[@data-testid='access-submit-btn']";
+    public LoginPage(){
+        PageFactory.initElements(driver, this);
+    }
 
-    private static String CHOOSE_FOOD_LOCATOR = "//button[@data-testid='choose-food']";
+    @FindBy(xpath = "//input[@id='access-student-id']")
+    WebElement studentIdElement;
 
-    private static String EMAIL_INPUT_LOCATOR = "login-email";
-    private static String PASSWORD_INPUT_LOCATOR = "login-password";
-    private static String LOGIN_SUBMIT_BTN_LOCATOR = "//button[@data-testid='login-submit-btn']";
+    @FindBy(xpath = "//input[@id='access-code']")
+    WebElement accessCodeElement;
 
-    private static String STUDENT_ID = "TS5FU2Z2ND";
-    private static String ACCESS_CODE = "P4VY95MB";
-    private static String EMAIL = "patilonkar18@gmail.com";
-    private static String PASSWORD = "Devansh@1";
+    @FindBy(xpath = "//button[@data-testid='access-submit-btn']")
+    WebElement continueBtnElement;
 
+    @FindBy(xpath = "//button[@data-testid='choose-food']")
+    WebElement chooseFoodElement;
+
+    @FindBy(id = "login-email")
+    WebElement emailInputElement;
+
+    @FindBy(id = "login-password")
+    WebElement passwordInputElement;
+
+    @FindBy(xpath = "//button[@data-testid='login-submit-btn']")
+    WebElement loginSubmitBtnElement;
+
+    PropFileOperations propFile = new PropFileOperations("src/onkarPatil/resources/credentials.Properties");
 
     public void doLogin(){
-        driver.findElement(By.id(STUDENT_ID_LOCATOR)).sendKeys(STUDENT_ID);
-        driver.findElement(By.id(STUDENT_ACCESS_CODE_LOCATOR)).sendKeys(ACCESS_CODE);
-        driver.findElement(By.xpath(ACCESS_SUBMIT_BTN_LOCATOR)).click();
+        setText(studentIdElement, propFile.getValue("STUDENT_ID"), true);
+        setText(accessCodeElement, propFile.getValue("ACCESS_CODE"), false);
+        clickOnElement(continueBtnElement, false);
 
-        WebElement chooseFoodLocator = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CHOOSE_FOOD_LOCATOR)));
-        chooseFoodLocator.click();
+        clickOnElement(chooseFoodElement, true);
 
-        WebElement emailLocator = wait.until(ExpectedConditions.presenceOfElementLocated(By.id(EMAIL_INPUT_LOCATOR)));
-        emailLocator.sendKeys(EMAIL);
-        driver.findElement(By.id(PASSWORD_INPUT_LOCATOR)).sendKeys(PASSWORD);
-        driver.findElement(By.xpath(LOGIN_SUBMIT_BTN_LOCATOR)).click();
+        setText(emailInputElement, propFile.getValue("EMAIL"), true);
+        setText(passwordInputElement, propFile.getValue("PASSWORD"), false);
+        clickOnElement(loginSubmitBtnElement, false);
     }
 }
