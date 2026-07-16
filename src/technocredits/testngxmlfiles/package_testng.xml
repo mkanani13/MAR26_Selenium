@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="D:/Technocredits/MAR2026/repo/MAR26_Selenium/src/technocredits/technoapp/testscripts/demo/Tc1.java">
+       <packages>
+           <package name="technocredits.technoapp.testscripts.demo"></package>
+       </packages>
+    </test>
+</suite>
