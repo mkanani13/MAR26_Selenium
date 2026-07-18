@@ -9,36 +9,46 @@ import riteshMali.base.BrowserActions;
 public class OrderSuccessPage extends BrowserActions {
     private WebElement orderPlacedHeaderElement;
 
+    private final String ORDER_PLACED_HEADER = "//h1[text()='Order placed!']";
+    private final String RESTAURANT_NAME= "//strong";
+    private final String AMOUNT_PAID = "//span[@data-testid='success-amount']";
+    private final String ORDER_NUMBER = "//span[@data-testid='success-order-number']";
+    private final String PAYMENT_MODE = "//span[text()='Paid via']/following-sibling::span";
+    private final String VIEW_MY_ORDER_LINK = "//a[@data-testid='success-view-orders']";
+    private final String TRACK_ORDER_LINK = "Track order";
+
+
+
     public void waitForPageLoad() {
-        orderPlacedHeaderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='Order placed!']")));
+        waitForAllElementsVisibility(By.xpath(ORDER_PLACED_HEADER));
     }
 
     public boolean isOrderPlacedDisplayed() {
-        return orderPlacedHeaderElement.isDisplayed();
+        return isElementDisplayed(By.xpath(ORDER_PLACED_HEADER));
     }
 
     public String getRestaurantName() {
-        return driver.findElement(By.xpath("//strong")).getText();
+        return getTextFromElement(By.xpath(RESTAURANT_NAME));
     }
 
     public String getAmtPaid() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@data-testid='success-amount']"))).getText();
+        return getTextFromElement(By.xpath(AMOUNT_PAID));
     }
 
     public String getOrderNumber() {
-        return driver.findElement(By.xpath("//span[@data-testid='success-order-number']")).getText();
+        return getTextFromElement(By.xpath(ORDER_NUMBER));
     }
 
     public String getPaymentMode() {
-        return driver.findElement(By.xpath("//span[text()='Paid via']/following-sibling::span")).getText();
+        return getTextFromElement(By.xpath(PAYMENT_MODE));
     }
 
     public void clickOnViewMyOrder() {
-        driver.findElement(By.xpath("//a[@data-testid='success-view-orders']")).click();
+        clickOnElement(By.xpath(VIEW_MY_ORDER_LINK));
     }
 
     public void clickOnTrackOrder() {
-        driver.findElement(By.linkText("Track order")).click();
+        clickOnElement(By.xpath(TRACK_ORDER_LINK));
     }
 
 

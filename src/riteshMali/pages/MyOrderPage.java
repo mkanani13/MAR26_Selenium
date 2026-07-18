@@ -2,8 +2,6 @@ package riteshMali.pages;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import riteshMali.base.BrowserActions;
 
 import java.util.ArrayList;
@@ -12,24 +10,31 @@ import java.util.List;
 import java.util.Map;
 
 public class MyOrderPage extends BrowserActions {
-    WebElement searchElement;
+    private final String SEARCH_INPUT = "//input[@id='filter-search']";
+    private final String ORDERS_TABLE_BODY = "//tbody[@id='orders-tbody']/tr[1]/td[2]";
+    private final String ORDER_TO_COLUMN = "//tbody[@id='orders-tbody']/tr[1]/td[2]";
+    private final String ORDER_DATE_COLUMN = "//tbody[@id='orders-tbody']/tr[1]/td[3]";
+    private final String RESTAURANT_NAME_COLUMN = "//tbody[@id='orders-tbody']/tr[1]/td[4]";
+    private final String ORDER_TOTAL_COLUMN = "//tbody[@id='orders-tbody']/tr[1]/td[6]";
+    private final String ORDER_STATUS_COLUMN = "//tbody[@id='orders-tbody']/tr[1]/td[7]";
+
 
     public void waitForPageLoad() {
-        searchElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='filter-search']")));
+         waitForElementVisibility(By.xpath(SEARCH_INPUT));
     }
 
-    public void searchOrderWithExactId(String orederId) {
-        searchElement.sendKeys(orederId);
-        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//tbody[@id='orders-tbody']/tr[1]/td[2]"), 1));
+    public void searchOrderWithExactId(String orderId) {
+        setTextOnElement(By.xpath(SEARCH_INPUT), orderId);
+        waitForElementTOBe(By.xpath(ORDERS_TABLE_BODY),1);
     }
 
     public Map<String, String> getOrderDetails() {
         Map<String, String> mapOfOrderitem = new LinkedHashMap<String, String>();
-        String orderId = driver.findElement(By.xpath("//tbody[@id='orders-tbody']/tr[1]/td[2]")).getText();
-        String date = driver.findElement(By.xpath("//tbody[@id='orders-tbody']/tr[1]/td[3]")).getText();
-        String restaurant = driver.findElement(By.xpath("//tbody[@id='orders-tbody']/tr[1]/td[4]")).getText();
-        String total = driver.findElement(By.xpath("//tbody[@id='orders-tbody']/tr[1]/td[6]")).getText();
-        String status = driver.findElement(By.xpath("//tbody[@id='orders-tbody']/tr[1]/td[7]")).getText();
+        String orderId = getTextFromElement(By.xpath(ORDER_TO_COLUMN));
+        String date = getTextFromElement(By.xpath(ORDER_DATE_COLUMN));
+        String restaurant = getTextFromElement(By.xpath(RESTAURANT_NAME_COLUMN));
+        String total = getTextFromElement(By.xpath(ORDER_TOTAL_COLUMN));
+        String status = getTextFromElement(By.xpath(ORDER_STATUS_COLUMN));
 
         getOrderDetails().put("Order #", orderId);
         getOrderDetails().put("Date", date);
