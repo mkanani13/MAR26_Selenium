@@ -34,7 +34,7 @@ public class  LoginPage extends BrowserAction {
     public void doLogin(){
         // -------> LoginPage
         System.out.println("enter access id and password and click");
-        setText(studentIdElement,"39WJAEGT2P");
+        setText(studentIdElement,"39WJAEGT2P",true);
 
         System.out.println("enter Access code");
         setText(accessCodeElement,"ZJ9KCRZQ");
@@ -44,7 +44,7 @@ public class  LoginPage extends BrowserAction {
 
         // -------> AppSelectingPage
         System.out.println("enter food app");
-        clickOnElement(foodapp);
+        clickOnElement(foodapp, true);
 
         // -------> FoodAppLoginPage
         System.out.println("customer id and password");

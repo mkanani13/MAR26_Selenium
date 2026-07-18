@@ -1,5 +1,5 @@
 package smratiGarg.PageFactory.base;
-
+.
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -65,6 +65,13 @@ public class BrowserAction {
         if(isWaitRequire)
             wait.until(ExpectedConditions.visibilityOf(we));
         we.sendKeys(text);
+    }
+
+    protected void getText (WebElement we, boolean isWaitRequire){
+        if(isWaitRequire)
+            wait.until(ExpectedConditions.visibilityOf(we));
+
+
     }
 
 }

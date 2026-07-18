@@ -9,6 +9,7 @@ import smratiGarg.PageFactory.base.BrowserAction;
 
 public class FindFoodPage extends BrowserAction {
 
+
     @FindBy(xpath = "//header/div/div/span[2]")
     WebElement headerText;
 
@@ -29,7 +30,7 @@ public class FindFoodPage extends BrowserAction {
     }
 
     public void clickRestaurantViewAndOrder(String restaurantName){
-
+        WebElement
         driver.findElement(By.xpath("(//h3[contains(text(),'Abhishek Pure Veg')]/following::a[text()='View & order'])[1]"))
                 .click();
     }
