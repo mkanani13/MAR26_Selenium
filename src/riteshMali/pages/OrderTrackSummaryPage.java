@@ -5,12 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import riteshMali.base.BrowserActions;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class OrderTrackSummary extends BrowserActions {
+public class OrderTrackSummaryPage extends BrowserActions {
+
+    private final String ORDER_TRACK_SUMMARY_PAGE_TITLE = "Track Order · Technocredits";
 
     private WebElement backToMyOrderBtn;
 

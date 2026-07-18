@@ -121,7 +121,7 @@ public class tc_3 {
         System.out.println("Step - Click on track order");
         orderSuccessPage.clickOnTrackOrder();
 
-        OrderTrackSummary orderTrackSummary = new OrderTrackSummary();
+        OrderTrackSummaryPage orderTrackSummary = new OrderTrackSummaryPage();
         orderTrackSummary.switchToTrackOrderDetails();
 
     }
