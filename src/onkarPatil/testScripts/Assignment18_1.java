@@ -1,7 +1,9 @@
 package onkarPatil.testScripts;
 
 import onkarPatil.base.BrowserActions;
+import onkarPatil.constants.ConstantPath;
 import onkarPatil.pages.*;
+import onkarPatil.utility.PropFileOperations;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,7 +14,8 @@ public class Assignment18_1 {
 
     @BeforeMethod
     public void setup(){
-        BrowserActions.start("http://34.66.197.232/#/access");
+        PropFileOperations propFile = new PropFileOperations(ConstantPath.CREDENTIALS_FILE_PATH);
+        BrowserActions.start(propFile.getValue("URL"));
     }
 
     @Test
@@ -31,7 +34,7 @@ public class Assignment18_1 {
         findFoodPage.selectLocationFromDropdown("Baner");
 
         System.out.println("STEP- Select the restaurant which has atleast one dish available and click 'View & Order button'");
-        String currentRestaurant = findFoodPage.getFirstRestaurantWithAvailbleDishes();
+        String currentRestaurant = findFoodPage.getFirstRestaurantWithAvailableDishes();
         findFoodPage.selectFirstRestaurantWithAvailbleDishes();
 
         System.out.println("STEP- Add any available (in-stock) dish to the shopping cart");

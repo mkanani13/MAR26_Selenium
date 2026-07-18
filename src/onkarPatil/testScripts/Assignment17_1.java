@@ -1,7 +1,9 @@
 package onkarPatil.testScripts;
 
 import onkarPatil.base.BrowserActions;
+import onkarPatil.constants.ConstantPath;
 import onkarPatil.pages.*;
+import onkarPatil.utility.PropFileOperations;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +13,8 @@ public class Assignment17_1 {
 
     @BeforeMethod
     public void setup(){
-        BrowserActions.start("http://34.66.197.232/#/access");
+        PropFileOperations propFile = new PropFileOperations(ConstantPath.CREDENTIALS_FILE_PATH);
+        BrowserActions.start(propFile.getValue("URL"));
     }
 
     @Test

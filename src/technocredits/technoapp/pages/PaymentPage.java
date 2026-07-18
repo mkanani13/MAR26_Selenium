@@ -32,7 +32,8 @@ public class PaymentPage extends BrowserActions {
     }
 
     public boolean isUPIIdErrorNotificationDisplayed(){
-        WebElement upiErrorNotification  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Enter a valid UPI ID (name@bank)']")));
+//        WebElement upiErrorNotification  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Enter a valid UPI ID (name@bank)']")));
+        WebElement upiErrorNotification  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='UPI ID is required']")));
         return upiErrorNotification.isDisplayed();
     }
 
