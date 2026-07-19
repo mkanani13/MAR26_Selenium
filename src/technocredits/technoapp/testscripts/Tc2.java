@@ -12,8 +12,15 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import technocredits.technoapp.base.BrowserActions;
+<<<<<<< HEAD
 import technocredits.technoapp.pages.LoginPage;
 import technocredits.technoapp.pages.FindFoodPage;
+=======
+import technocredits.technoapp.constant.FilePaths;
+import technocredits.technoapp.pages.FindFoodPage;
+import technocredits.technoapp.pages.LoginPage;
+import technocredits.technoapp.utility.PropertyOperations;
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
 import java.time.Duration;
 import java.util.regex.Pattern;
@@ -21,16 +28,29 @@ import java.util.regex.Pattern;
 public class Tc2 {
 
     WebDriver driver;
+<<<<<<< HEAD
 
     @BeforeMethod
     public void setup(){
         BrowserActions.start("http://34.66.197.232/#/access");
+=======
+    PropertyOperations configProperty = new PropertyOperations(FilePaths.CONFIG_FILE_PATH);
+
+
+    @BeforeMethod
+    public void setup() {
+        BrowserActions.start(configProperty.getValue("URL"));
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         LoginPage loginPage = new LoginPage();
         loginPage.doLogin();
     }
 
     @Test
+<<<<<<< HEAD
     public void verifyPlaceOrderFeature(){
+=======
+    public void verifyPlaceOrderFeature() {
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         System.out.println("STEP - Select location as Baner");
         FindFoodPage findFoodPage = new FindFoodPage();
         findFoodPage.setLocationInDropdown("Baner");
@@ -42,12 +62,21 @@ public class Tc2 {
         WebElement itemElement = driver.findElement(By.xpath("(//table[@data-testid='menu-table']/tbody/tr/td[4][text()!='0'])[1]/preceding-sibling::td[3]/div/div/div[1]"));
         WebElement dropAreaElement = driver.findElement(By.xpath("//div[@id='cart-dropzone']"));
         Actions actions = new Actions(driver);
+<<<<<<< HEAD
         actions.dragAndDrop(itemElement,dropAreaElement).perform();
 
         System.out.println("VERIFY - Item quantity should be 1");
         WebElement qElement  = driver.findElement(By.xpath("(//table[@data-testid='menu-table']/tbody/tr/td[4][text()!='0'])[1]/following-sibling::td[1]/input"));
         String quantity = qElement.getAttribute("value");
         Assert.assertEquals(quantity,"1");
+=======
+        actions.dragAndDrop(itemElement, dropAreaElement).perform();
+
+        System.out.println("VERIFY - Item quantity should be 1");
+        WebElement qElement = driver.findElement(By.xpath("(//table[@data-testid='menu-table']/tbody/tr/td[4][text()!='0'])[1]/following-sibling::td[1]/input"));
+        String quantity = qElement.getAttribute("value");
+        Assert.assertEquals(quantity, "1");
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("STEP - Increase quantity by 1");
         qElement.click();
@@ -55,7 +84,11 @@ public class Tc2 {
 
         System.out.println("VERIFY - Item quantity should be 2");
         quantity = qElement.getAttribute("value");
+<<<<<<< HEAD
         Assert.assertEquals(quantity,"2");
+=======
+        Assert.assertEquals(quantity, "2");
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("STEP - Enter address");
         driver.findElement(By.xpath("//input[@id='addr-pick-input']")).sendKeys("Wakad");
@@ -82,7 +115,11 @@ public class Tc2 {
         System.out.println("ORDER ID IS " + orderId);
 
         System.out.println("VERIFY - order is present in My order list");
+<<<<<<< HEAD
         boolean flag = driver.findElement(By.xpath("//td[1][text()='"+orderId+"']")).isDisplayed();
+=======
+        boolean flag = driver.findElement(By.xpath("//td[1][text()='" + orderId + "']")).isDisplayed();
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         Assert.assertTrue(flag, "Order id " + orderId + " was not displayed");
 
     }

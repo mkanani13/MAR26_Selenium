@@ -20,15 +20,24 @@ public class Ass17 {
     @BeforeTest
     public void setup(){
         System.out.println("STEP-Launch TechnoCredits Pune Food Delivery");
+<<<<<<< HEAD
         driver = BrowserActions.start("http://34.66.197.232/#/access");
+=======
+        driver = BrowserActions.start("http://34.173.201.53/#/access");
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         LoginPage loginPage = new LoginPage();
         loginPage.doLogin();
 
         System.out.println("STEP- Verify the logged in User");
         String loginName = driver.findElement(By.xpath("//header[@id='fd-header']/div/div/span[2]")).getText();
         System.out.println(loginName);
+<<<<<<< HEAD
         //if(loginName.contains("Nishant Bentur"))
           //  System.out.println("User verified");
+=======
+        if(loginName.contains("Nishant Bentur"))
+            System.out.println("User verified");
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
     }
 
     @Test
@@ -42,7 +51,11 @@ public class Ass17 {
         driver.findElement(By.xpath("//div[@data-testid = 'restaurants-grid']//h3[text()='Abhishek Pure Veg ']/following::a")).click();
 
         System.out.println("STEP- Add one quantity of Paneer tikka");
+<<<<<<< HEAD
         WebElement paneerTikkaQtyElement = driver.findElement(By.xpath("//table[@data-testid='menu-table']/tbody/tr/td[5]/input[@data-name='Plain Roti']"));
+=======
+        WebElement paneerTikkaQtyElement = driver.findElement(By.xpath("//table[@data-testid='menu-table']/tbody/tr/td[5]/input[@data-name='Paneer Tikka']"));
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         paneerTikkaQtyElement.click();
         Actions action = new Actions(driver);
         action.sendKeys(Keys.ARROW_UP).perform();
@@ -77,9 +90,17 @@ public class Ass17 {
         Assert.assertEquals(orderConfirmationText,"Order placed!");
     }
 
+<<<<<<< HEAD
 //    @AfterTest
 //    public void tearDown(){
 //        System.out.println("STEP- Closing the browser");
 //        BrowserActions.closeBrowser();
 //    }
+=======
+    @AfterTest
+    public void tearDown(){
+        System.out.println("STEP- Closing the browser");
+        BrowserActions.closeBrowser();
+    }
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 }

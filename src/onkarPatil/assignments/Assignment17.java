@@ -21,7 +21,11 @@ public class Assignment17 {
     @BeforeMethod
     public void setup(){
         driver = new ChromeDriver();
+<<<<<<< HEAD
         driver.get("http://34.66.197.232/#/access");
+=======
+        driver.get("http://34.173.201.53/access#/login");
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.manage().window().maximize();
     }
@@ -52,8 +56,12 @@ public class Assignment17 {
         select.selectByVisibleText("Kothrud");
 
         System.out.println("STEP- Select Abhishek Pure Veg and click 'View & Order button'");
+<<<<<<< HEAD
         WebElement viewAndOrderBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h3[contains(text(),'Abhishek Pure Veg')]/following::a[1]")));
         viewAndOrderBtn.click();
+=======
+        driver.findElement(By.xpath("//h3[text()='Abhishek Pure Veg ']/following::a")).click();
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("STEP- Add any available (in-stock) dish to the shopping cart");
         WebElement addToCart = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[contains(@data-testid,'menu-row-dish')]/td[4][text()!='0'])[1]/following-sibling::td/input")));

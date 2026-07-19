@@ -21,7 +21,11 @@ public class Assignment18 {
     @BeforeMethod
     public void setup(){
         driver = new ChromeDriver();
+<<<<<<< HEAD
         driver.get("http://34.66.197.232/#/access");
+=======
+        driver.get("http://34.173.201.53/access#/login");
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.manage().window().maximize();
     }

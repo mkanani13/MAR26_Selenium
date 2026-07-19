@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package SeleniumAssignment;
+=======
+package Asawari;
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
