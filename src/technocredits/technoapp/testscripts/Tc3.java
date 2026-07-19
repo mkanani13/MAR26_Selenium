@@ -1,28 +1,6 @@
 package technocredits.technoapp.testscripts;
 
 import org.testng.Assert;
-<<<<<<< HEAD
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import technocredits.technoapp.base.BrowserActions;
-import technocredits.technoapp.pages.*;
-import technocredits.technoapp.utility.DateTimeUtility;
-
-import java.util.*;
-
-public class Tc3 {
-
-    @BeforeMethod
-    public void setup(){
-        BrowserActions.start("http://34.66.197.232/#/access");
-        LoginPage loginPage = new LoginPage();
-        loginPage.doLogin();
-    }
-
-    @Test
-    public void verifyPlaceOrderFeature(){
-=======
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -62,7 +40,6 @@ public class Tc3 extends TestBase {
 
     @Test(dataProvider = "testData")
     public void verifyPlaceOrderFeature(Map<String, String> data) {
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         FindFoodPage findFoodPage = new FindFoodPage();
         findFoodPage.waitForPageLoad();
 
@@ -87,11 +64,7 @@ public class Tc3 extends TestBase {
         String dish = restauarantMenuPage.getFirstAvailableDish();
 
         System.out.println("STEP - From the restaurant menu, locate the first food item whose Stock value is greater than 0 and increase its quantity by clicking the Qty Up Arrow.");
-<<<<<<< HEAD
-        restauarantMenuPage.setQuantityOfGivenDish(dish,2);
-=======
         restauarantMenuPage.setQuantityOfGivenDish(dish, 2);
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("VERIFY - that the cart Subtotal is greater than 0.");
         String subTotalText = restauarantMenuPage.getSubTotal();
@@ -136,15 +109,9 @@ public class Tc3 extends TestBase {
         System.out.println("STEP - Click on Pay & Place Order");
         paymentPage.clickOnPayPlaceOrderBtn();
 
-<<<<<<< HEAD
-         System.out.println("VERIFY - Confirm the UPI ID error notification displayed");
-         boolean upiFlag = paymentPage.isUPIIdErrorNotificationDisplayed();
-         Assert.assertTrue(upiFlag);
-=======
         System.out.println("VERIFY - Confirm the UPI ID error notification displayed");
         boolean upiFlag = paymentPage.isUPIIdErrorNotificationDisplayed();
         Assert.assertTrue(upiFlag);
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("STEP - Enter a valid UPI ID in the payment field.");
         paymentPage.setUPIId("mkanani@okhdfcbank");
@@ -167,11 +134,7 @@ public class Tc3 extends TestBase {
 
         System.out.println("VERFIY - Amount Paid");
         String orderSummaryPage_amountPaid = orderSuccessPage.getAmtPaid();
-<<<<<<< HEAD
-        softAssert.assertEquals(orderSummaryPage_amountPaid,paymentSummaryTotalPayableAmt);
-=======
         softAssert.assertEquals(orderSummaryPage_amountPaid, paymentSummaryTotalPayableAmt);
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("VERIFY - Order id format is as expected");
         String orderSummaryPage_orderId = orderSuccessPage.getOrderNumber();
@@ -201,11 +164,7 @@ public class Tc3 extends TestBase {
 
         System.out.println("VERIFY - food deliver status and respective message");
         boolean isOrderDeliveredFlag = orderTrackSummaryPage.isOrderDelivered();
-<<<<<<< HEAD
-        boolean isOrderDeliverTextFlag =  orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
-=======
         boolean isOrderDeliverTextFlag = orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
         System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
         Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
@@ -215,17 +174,11 @@ public class Tc3 extends TestBase {
 
         System.out.println("VERIFY - food deliver status and respective message");
         isOrderDeliveredFlag = orderTrackSummaryPage.isOrderDelivered();
-<<<<<<< HEAD
-        isOrderDeliverTextFlag =  orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
-=======
         isOrderDeliverTextFlag = orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
         System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
         Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
     }
-<<<<<<< HEAD
-=======
 
 //    @AfterMethod
 //    public void tearDown(ITestResult result) {
@@ -248,5 +201,4 @@ public class Tc3 extends TestBase {
 //
 //        System.out.println("Execution Done...!");
 //    }
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 }

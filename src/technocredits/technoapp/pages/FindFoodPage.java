@@ -3,58 +3,6 @@ package technocredits.technoapp.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-<<<<<<< HEAD
-import org.openqa.selenium.support.FindAll;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import technocredits.technoapp.base.BrowserActions;
-
-import java.util.*;
-
-public class FindFoodPage extends BrowserActions {
-    @FindBy(xpath = "//select[@data-testid='locality-dropdown']")
-    WebElement locationDD;
-
-    @FindBy(xpath = "//div[@id='restaurants-grid']/div//p")
-    List<WebElement> listOfRestLoc;
-
-//    @FindAll({
-//            @FindBy(xpath = "//div[@id='restaurants-grid']/div//p"),
-//            @FindBy(className = "abc")
-//    })
-//    List<WebElement> listOfRestLoc1;
-
-    public FindFoodPage(){
-        PageFactory.initElements(driver, this);
-    }
-
-    public void waitForPageLoad(){
-        //wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@id='restaurants-grid']/div"),1));
-        waitForNumberOfElementsToBeMoreThan(By.xpath("//div[@id='restaurants-grid']/div"), 1);
-    }
-
-    public Set<String> getLocationsFromLocationDropdown(){
-        Select locationSelect = new Select(locationDD);
-        Set<String> listOptionsText = new LinkedHashSet<>();
-
-        List<WebElement> listOfOptions = locationSelect.getOptions();
-        for(WebElement e : listOfOptions){
-            listOptionsText.add(e.getText());
-        }
-        listOptionsText.remove("All localities");
-        System.out.println("Total location from dropdown " + listOptionsText.size());
-        System.out.println(listOptionsText);
-        return listOptionsText;
-    }
-
-    public Set<String> getUniueSetOfRestaurantsLocation(){
-        List<WebElement> listOfRestLoc = driver.findElements(By.xpath("//div[@id='restaurants-grid']/div//p"));
-        Set<String> setOfLoation = new TreeSet<>();
-        for(WebElement e : listOfRestLoc){
-=======
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import technocredits.technoapp.base.BrowserActions;
 
@@ -97,7 +45,6 @@ public class FindFoodPage extends CommonPage {
         List<WebElement> listOfRestLoc = getAllElements(By.xpath(RESTAURANT_LOCATIONS));
         Set<String> setOfLoation = new TreeSet<>();
         for (WebElement e : listOfRestLoc) {
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
             String locationText = e.getText().split(" · ")[0];
             setOfLoation.add(locationText);
         }
@@ -105,40 +52,6 @@ public class FindFoodPage extends CommonPage {
         return setOfLoation;
     }
 
-<<<<<<< HEAD
-    public int getCountOfListedRestaurants(){
-        return driver.findElements(By.xpath("//div[@id='restaurants-grid']/div")).size();
-    }
-
-    public void setLocationInDropdown(String locationText){
-        Select locationSelect = new Select(locationDD);
-        locationSelect.selectByVisibleText(locationText);
-    }
-
-    public boolean isNoRestaurantsLabelIsDisplayed(){
-        boolean flag = driver.findElement(By.xpath("//div[text()='No restaurants match your filters.']")).isDisplayed();
-        return flag;
-    }
-
-    public void clickOnDismiss(){
-        driver.findElement(By.xpath("//button[@id='docs-banner-dismiss']")).click();
-    }
-
-    public boolean isDocNotificationDisplayed(){
-        try{
-            return driver.findElement(By.xpath("//p[text()='Please read the Docs page first before performing any operations.']")).isDisplayed();
-        }catch (NoSuchElementException ne) {
-            return false;
-        }
-    }
-
-    public String getFirstRestaurantNameHavingDishes(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[text()='View & order'])[1] | //div[@data-testid='restaurants-empty']")));
-        String restaurantName = null;
-        try{
-            restaurantName = driver.findElement(By.xpath("//div[@data-testid = 'restaurants-grid']//p[1][not(contains(text(),' 0 dishes'))]/preceding-sibling::h3")).getText().trim();
-        }catch(NoSuchElementException ne){
-=======
     public int getCountOfListedRestaurants() {
         return getSizeOfElements(By.xpath(RESTAURANT_GRID));
 //        return driver.findElements(By.xpath(RESTAURANT_GRID)).size();
@@ -172,29 +85,18 @@ public class FindFoodPage extends CommonPage {
 //            restaurantName = driver.findElement(By.xpath(RESTAURANT_NAME_HAVING_DISHES)).getText().trim();
             restaurantName = getTextFromElement(By.xpath(RESTAURANT_NAME_HAVING_DISHES));
         } catch (NoSuchElementException ne) {
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
             System.out.println("Either no restaurants or all the restaurants having 0 dishes");
         }
         String[] arr = restaurantName.split(" ");
         //String[] tempArr = Arrays.copyOf(arr,arr.length-1);
         //restaurantName = String.join(" ",tempArr);
         restaurantName = "";
-<<<<<<< HEAD
-        for(int index = 0; index<arr.length-1;index++){
-           restaurantName += arr[index] + " ";
-=======
         for (int index = 0; index < arr.length - 1; index++) {
             restaurantName += arr[index] + " ";
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         }
         return restaurantName.trim();
     }
 
-<<<<<<< HEAD
-    public void clickOnViewOrder(String restaurantName){
-        //WebElement viewOrderLink = driver.findElement(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/following::a[1]"));
-        clickOnElement(By.xpath("//h3[contains(text(),'"+restaurantName+"')]/following::a[1]"),false);
-=======
     public void clickOnViewOrder(String restaurantName) {
 //        try {
 //            Thread.sleep(2000);
@@ -209,7 +111,7 @@ public class FindFoodPage extends CommonPage {
 //    public static void main(String[] args) {
 //        String restaurantName = "Jyotis kitchen";
 //        String s2 = "Harsh";
-////        String s = "//h3[contains(text(),'" + restaurantName + "')]/following::a[1]";
+    // //        String s = "//h3[contains(text(),'" + restaurantName + "')]/following::a[1]";
 //        String s = "//h3[contains(text(),'%s')]/following::a[1]//%s";
 //
 //        System.out.println(String.format(s, restaurantName, s2));
@@ -217,6 +119,5 @@ public class FindFoodPage extends CommonPage {
 
     public void searchRestaurant(String restaurantName) {
         setTextOnElement(By.xpath("//input[@placeholder='Search for restaurants']"), restaurantName);
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
     }
 }

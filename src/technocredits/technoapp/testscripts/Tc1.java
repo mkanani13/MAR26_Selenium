@@ -1,32 +1,5 @@
 package technocredits.technoapp.testscripts;
 
-<<<<<<< HEAD
-import org.openqa.selenium.WebDriver;
-
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import technocredits.technoapp.base.BrowserActions;
-import technocredits.technoapp.pages.LoginPage;
-import technocredits.technoapp.pages.FindFoodPage;
-
-import java.util.*;
-
-public class Tc1 {
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setup(){
-        BrowserActions.start("http://34.66.197.232/#/access");
-        LoginPage loginPage = new LoginPage();
-        loginPage.doLogin();
-    }
-
-    @Test
-    public void locationTest(){
-=======
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -49,7 +22,6 @@ public class Tc1 extends TestBase {
 
     @Test
     public void locationTest() {
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         FindFoodPage findFoodPage = new FindFoodPage();
         findFoodPage.waitForPageLoad();
         System.out.println("STEP - get all the location from location dropdown");
@@ -60,11 +32,7 @@ public class Tc1 extends TestBase {
         int dbRestCount = 41;
         System.out.println(totalRestaurants);
         System.out.println("VERIFY - DB Restaurants count with actual count on UI");
-<<<<<<< HEAD
-        Assert.assertEquals(totalRestaurants,dbRestCount);
-=======
         Assert.assertEquals(totalRestaurants, dbRestCount);
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("SETP - fetch unique locations of the restaurants");
         Set<String> locationSet = findFoodPage.getUniueSetOfRestaurantsLocation();
@@ -75,11 +43,7 @@ public class Tc1 extends TestBase {
 
         SoftAssert softAssert = new SoftAssert();
         System.out.println("VERIFY - when no restaurant location selected, it should show No restaurants.");
-<<<<<<< HEAD
-        for(String location : availableLocationSet){
-=======
         for (String location : availableLocationSet) {
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
             findFoodPage.setLocationInDropdown(location);
             boolean flag = findFoodPage.isNoRestaurantsLabelIsDisplayed();
             softAssert.assertTrue(flag, location + ", no restaurant label was not displayed");
@@ -94,16 +58,8 @@ public class Tc1 extends TestBase {
 //        Assert.assertFalse(isNotificationDisplayedFlag);
     }
 
-<<<<<<< HEAD
-    @AfterMethod
-    public void tearDown(){
-
-        //BrowserActions.quitBrowser();
-    }
-=======
 //    @AfterMethod
 //    public void tearDown(){
 //        BrowserActions.quitBrowser();
 //    }
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 }

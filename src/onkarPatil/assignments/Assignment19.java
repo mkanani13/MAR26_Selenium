@@ -21,11 +21,7 @@ public class Assignment19 {
     @BeforeMethod
     public void setup(){
         driver = new ChromeDriver();
-<<<<<<< HEAD
-        driver.get("http://34.66.197.232/#/access");
-=======
         driver.get("http://34.173.201.53/access#/login");
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.manage().window().maximize();
     }
@@ -146,11 +142,7 @@ public class Assignment19 {
         Assert.assertEquals(orderId, finalOrderNum);
 
         System.out.println("VERIFY- Verify that the Amount paid displayed in the Track Order tab/section is same as the price displayed under the Total column for the placed Order number in the View my orders tab/section");
-<<<<<<< HEAD
-        String amtDisplayedOnMyOrdersPageText = driver.findElement(By.xpath("//tbody[@data-testid='orders-tbody']/tr[1]/td[5]")).getText().substring(1);
-=======
         String amtDisplayedOnMyOrdersPageText = driver.findElement(By.xpath("//tbody[@data-testid='orders-tbody']/tr[1]/td[4]")).getText().substring(1);
->>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         double amtDisplayedOnMyOrdersPage = Double.parseDouble(amtDisplayedOnMyOrdersPageText);
         Assert.assertEquals(amtDisplayedOnMyOrdersPage, expectedPayableAmt);
     }
