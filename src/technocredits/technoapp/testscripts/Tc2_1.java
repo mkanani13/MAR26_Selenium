@@ -1,5 +1,6 @@
 package technocredits.technoapp.testscripts;
 
+<<<<<<< HEAD
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,10 +17,21 @@ import technocredits.technoapp.pages.*;
 import technocredits.technoapp.utility.DateTimeUtility;
 
 import java.time.Duration;
+=======
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import technocredits.technoapp.constant.FilePaths;
+import technocredits.technoapp.pages.*;
+import technocredits.technoapp.utility.DateTimeUtility;
+import technocredits.technoapp.utility.PropertyOperations;
+
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 public class Tc2_1 {
 
     @BeforeMethod
@@ -31,6 +43,14 @@ public class Tc2_1 {
 
     @Test
     public void verifyPlaceOrderFeature(){
+=======
+public class Tc2_1 extends TestBase {
+
+    PropertyOperations configProperty = new PropertyOperations(FilePaths.CONFIG_FILE_PATH);
+
+    @Test
+    public void verifyPlaceOrderFeature() {
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         FindFoodPage findFoodPage = new FindFoodPage();
         findFoodPage.waitForPageLoad();
 
@@ -55,7 +75,11 @@ public class Tc2_1 {
         String dish = restauarantMenuPage.getFirstAvailableDish();
 
         System.out.println("STEP - From the restaurant menu, locate the first food item whose Stock value is greater than 0 and increase its quantity by clicking the Qty Up Arrow.");
+<<<<<<< HEAD
         restauarantMenuPage.setQuantityOfGivenDish(dish,2);
+=======
+        restauarantMenuPage.setQuantityOfGivenDish(dish, 2);
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("VERIFY - that the cart Subtotal is greater than 0.");
         String subTotalText = restauarantMenuPage.getSubTotal();
@@ -100,9 +124,15 @@ public class Tc2_1 {
         System.out.println("STEP - Click on Pay & Place Order");
         paymentPage.clickOnPayPlaceOrderBtn();
 
+<<<<<<< HEAD
          System.out.println("VERIFY - Confirm the UPI ID error notification displayed");
          boolean upiFlag = paymentPage.isUPIIdErrorNotificationDisplayed();
          Assert.assertTrue(upiFlag);
+=======
+        System.out.println("VERIFY - Confirm the UPI ID error notification displayed");
+        boolean upiFlag = paymentPage.isUPIIdErrorNotificationDisplayed();
+        Assert.assertTrue(upiFlag);
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("STEP - Enter a valid UPI ID in the payment field.");
         paymentPage.setUPIId("mkanani@okhdfcbank");
@@ -125,7 +155,11 @@ public class Tc2_1 {
 
         System.out.println("VERFIY - Amount Paid");
         String orderSummaryPage_amountPaid = orderSuccessPage.getAmtPaid();
+<<<<<<< HEAD
         softAssert.assertEquals(orderSummaryPage_amountPaid,paymentSummaryTotalPayableAmt);
+=======
+        softAssert.assertEquals(orderSummaryPage_amountPaid, paymentSummaryTotalPayableAmt);
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
 
         System.out.println("VERIFY - Order id format is as expected");
         String orderSummaryPage_orderId = orderSuccessPage.getOrderNumber();
@@ -150,6 +184,7 @@ public class Tc2_1 {
 
         System.out.println("VERIFY - verify Order details");
         Assert.assertEquals(orderDetailsMap.get("Order #"), orderSummaryPage_orderId);
+<<<<<<< HEAD
         Assert.assertEquals(orderDetailsMap.get("Date"),expectedOrderDateTime);
         Assert.assertTrue(orderDetailsMap.get("Restaurant").contains(restaurantName));
         Assert.assertEquals(orderDetailsMap.get("Total"),subTotalText);
@@ -158,6 +193,16 @@ public class Tc2_1 {
     }
 
     private List<String> getOrderStatusList(){
+=======
+        Assert.assertEquals(orderDetailsMap.get("Date"), expectedOrderDateTime);
+        Assert.assertTrue(orderDetailsMap.get("Restaurant").contains(restaurantName));
+        Assert.assertEquals(orderDetailsMap.get("Total"), subTotalText);
+        //Assert.assertTrue(getOrderStatusList().contains(orderDetailsMap.get("Status")));
+        Assert.assertListContainsObject(getOrderStatusList(), orderDetailsMap.get("Status"), "Displayed Status was not in the list");
+    }
+
+    private List<String> getOrderStatusList() {
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
         List<String> orderStatusList = new ArrayList<>();
         orderStatusList.add("Pending");
         orderStatusList.add("Accepted");

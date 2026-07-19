@@ -14,7 +14,10 @@ import java.util.List;
 public class Example1 {
 	WebDriver driver;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 002f1872ab401f3e8eeecbddfb83bd6302b737fe
     void setUp() {
 		driver = BrowserActions.start();
 		driver.findElement(By.linkText("Demo Tables")).click();
