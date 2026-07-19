@@ -3,7 +3,7 @@ package Amitjoshi.TechnoAppTesting.utility;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-private  final  class DateTimeUtility {
+public final class DateTimeUtility {
 
     private DateTimeUtility(){
 

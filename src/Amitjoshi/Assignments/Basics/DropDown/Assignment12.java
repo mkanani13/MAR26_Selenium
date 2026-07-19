@@ -13,33 +13,57 @@ Fetch and print the updated list of selected options in the Console after desele
 
 package Amitjoshi.Assignments.Basics.DropDown;
 
+import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.time.Duration;
-import java.util.List;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class Assignment12 {
-    public static void main(String[] args)  {
-        WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
+    private WebDriverWait wait;
+
+    @BeforeMethod
+    public void setUp() {
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         driver.get("http://automationbykrishna.com/");
+    }
+
+    @Test
+    public void verifyDeselectingOptionFive() {
         driver.findElement(By.id("basicelements")).click();
-        System.out.println("we find the element and clicked on it");
-        WebElement DropDElement =  driver.findElement(By.xpath("//select[@class ='form-control m-bot15']"));
-        Select selectNumber = new Select(DropDElement);
+        Select multiSelect = getMultiSelect();
+        multiSelect.selectByVisibleText("2");
+        multiSelect.selectByVisibleText("5");
+        Assert.assertEquals(multiSelect.getAllSelectedOptions().size(), 2);
 
-        System.out.println("STEP - print all the options of the first dropdown");
-        List<WebElement> listOfElement = selectNumber.getOptions();
+        multiSelect.deselectByVisibleText("5");
+        List<WebElement> selectedOptions = multiSelect.getAllSelectedOptions();
 
-        for (WebElement e : listOfElement){
-            System.out.println(e.getText());
+        Assert.assertEquals(selectedOptions.size(), 1);
+        Assert.assertEquals(selectedOptions.get(0).getText(), "2");
+        selectedOptions.forEach(option -> System.out.println(option.getText()));
+    }
 
+    private Select getMultiSelect() {
+        return new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@multiple]"))));
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
         }
     }
 }

@@ -10,23 +10,49 @@ Print the complete table data in the Console Output.
 
 package Amitjoshi.Assignments.Basics.DemoTables;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-import java.time.Duration;
+import java.util.List;
 
 public class Assignment14 {
-     public static void main(String[] args) {
-         WebDriver driver = new ChromeDriver();
-         driver.manage().window().maximize();
-         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-     driver.get("http://automationbykrishna.com/");
-         System.out.println("step - get the required url");
-         driver.findElement(By.linkText("Demo Tables")).click();
+    WebDriver driver;
+    Alert alert;
 
+    @BeforeTest
+    public void setUp() {
+        System.out.println("STEP - WebDriver Initializing and Browser Launched");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        System.out.println("STEP - URL Navigation");
+        driver.get("http://automationbykrishna.com/");
+        System.out.println("STEP - Page Verification after redirect");
+        String actualPageTitle = driver.getTitle();
+        String expectedPageTitle = "Login Signup Demo";
+        Assert.assertEquals(actualPageTitle, expectedPageTitle, "Page title not match!");
+        System.out.println("STEP - Demo tables link click");
+        driver.findElement(By.xpath("//a[@id='demotable']")).click();
+    }
 
-     }
+    @AfterTest
+    public void setupEnd() {
+        driver.quit();
+        System.out.println("Browser closed");
+    }
 
-
+    @Test
+    public void test() throws InterruptedException {
+        List<WebElement> empTable = driver.findElements(By.xpath("//table[@id='table1']//tbody"));
+        for(WebElement tabledata: empTable) {
+            System.out.println("STEP - Employee table data print");
+            System.out.println(tabledata.getText());
+        }
+    }
 }

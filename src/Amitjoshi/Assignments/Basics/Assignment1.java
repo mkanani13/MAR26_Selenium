@@ -2,33 +2,54 @@ package Amitjoshi.Assignments.Basics;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class Assignment1 {
 
-    public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+    WebDriver driver;
+    WebDriverWait wait;
+
+    @BeforeMethod
+    public void setup() {
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.get("http://automationbykrishna.com/#");
         driver.manage().window().maximize();
-        System.out.println("step1- window is maximized now clicking on registration ");
-       WebElement element= driver.findElement(By.id("registration2"));
-        element.click();
-        Thread.sleep(2000);
-        System.out.println("step2- imputing user and password = maulik, password= kanani@12  ");
-        driver.findElement(By.id("unameSignin")).sendKeys("Maulik");
-        System.out.println("the user name is done");
-        driver.findElement(By.id("pwdSignin")).sendKeys("kanani@12");
-        System.out.println("clicking the checkbox for not a robot");
-        driver.findElement(By.id("rememberme")).click();
-        System.out.println("click on submit button");
-        driver.findElement(By.id("btnsubmitdetails")).click();
-       element.getText();
-
-
-
-        Thread.sleep(8000);
-        driver.close();
     }
 
+    @Test
+    public void verifyLogin() {
+        driver.findElement(By.id("registration2")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("unameSignin")));
+
+        driver.findElement(By.id("unameSignin")).sendKeys("Maulik");
+        driver.findElement(By.id("pwdSignin")).sendKeys("kanani@12");
+        driver.findElement(By.id("rememberme")).click();
+        driver.findElement(By.id("btnsubmitdetails")).click();
+
+        String actualAlertMessage =
+                wait.until(ExpectedConditions.alertIsPresent()).getText();
+
+        Assert.assertEquals(actualAlertMessage,
+                "Success!");
+
+        driver.switchTo().alert().accept();
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }

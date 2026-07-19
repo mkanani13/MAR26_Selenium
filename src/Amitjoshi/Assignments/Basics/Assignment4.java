@@ -13,37 +13,45 @@ Alert message should pop-up "You must be TechnoCredits student!!"
 
 package Amitjoshi.Assignments.Basics;
 
+import java.time.Duration;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class Assignment4 {
-    public  static void main(String[] args) {
+    private WebDriver driver;
+    private WebDriverWait wait;
 
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://automationbykrishna.com/");
+    @BeforeMethod
+    public void setUp() {
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        driver.get("http://automationbykrishna.com/");
+    }
+
+    @Test
+    public void verifyJavaScriptAlertMessage() {
         driver.findElement(By.id("basicelements")).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        driver.findElement(By.xpath("//button[@id= 'javascriptAlert']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("javascriptAlert"))).click();
 
-        Alert alert = driver.switchTo().alert();
-        String actualText = alert.getText();
-        String ExpectedText= "You must be TechnoCredits student!!";
-
-        if(actualText.equals(ExpectedText)){
-            System.out.println("success");
-        }else{
-            System.out.println("failed");
-        }
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Assert.assertEquals(alert.getText(), "You must be TechnoCredits student!!");
         alert.accept();
-        driver.quit();
+    }
 
-
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
