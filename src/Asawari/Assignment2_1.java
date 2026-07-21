@@ -1,4 +1,4 @@
-package SeleniumAssignment;
+package Asawari;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

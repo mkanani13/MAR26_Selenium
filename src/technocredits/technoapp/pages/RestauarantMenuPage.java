@@ -35,8 +35,7 @@ public class RestauarantMenuPage extends BrowserActions {
         }
     }
 
-    public String getSubTotal(){
-        String subTotalText = driver.findElement(By.xpath("//strong[@id='ot-subtotal']")).getText();
-        return subTotalText;
+    public String getSubTotal() {
+        return getTextFromElement(By.xpath(SUB_TOTAL));
     }
 }
