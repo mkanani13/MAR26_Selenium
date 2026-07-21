@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import technocredits.technoapp.base.BrowserActions;
 import technocredits.technoapp.pages.LoginPage;
-import technocredits.technoapp.pages.RestaurantsPage;
+import technocredits.technoapp.pages.FindFoodPage;
 
 import java.time.Duration;
 import java.util.regex.Pattern;
@@ -24,7 +24,7 @@ public class Tc2 {
 
     @BeforeMethod
     public void setup(){
-        driver = BrowserActions.start("http://34.173.201.53/access#/login");
+        BrowserActions.start("http://34.66.197.232/#/access");
         LoginPage loginPage = new LoginPage();
         loginPage.doLogin();
     }
@@ -32,8 +32,8 @@ public class Tc2 {
     @Test
     public void verifyPlaceOrderFeature(){
         System.out.println("STEP - Select location as Baner");
-        RestaurantsPage restaurantsPage = new RestaurantsPage();
-        restaurantsPage.setLocationInDropdown("Baner");
+        FindFoodPage findFoodPage = new FindFoodPage();
+        findFoodPage.setLocationInDropdown("Baner");
 
         System.out.println("STEP - Click on View & Order of the restaurants having dishes");
         driver.findElement(By.xpath("(//div[@data-testid = 'restaurants-grid']//p[not(contains(text(),' 0 dishes'))]/following::a[1])[1]")).click();

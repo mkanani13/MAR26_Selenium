@@ -52,7 +52,8 @@ public class Assignment17 {
         select.selectByVisibleText("Kothrud");
 
         System.out.println("STEP- Select Abhishek Pure Veg and click 'View & Order button'");
-        driver.findElement(By.xpath("//h3[text()='Abhishek Pure Veg ']/following::a")).click();
+        WebElement viewAndOrderBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h3[contains(text(),'Abhishek Pure Veg')]/following::a[1]")));
+        viewAndOrderBtn.click();
 
         System.out.println("STEP- Add any available (in-stock) dish to the shopping cart");
         WebElement addToCart = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[contains(@data-testid,'menu-row-dish')]/td[4][text()!='0'])[1]/following-sibling::td/input")));

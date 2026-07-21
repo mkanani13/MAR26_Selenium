@@ -1,45 +1,26 @@
 package technocredits.technoapp.testscripts;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import technocredits.technoapp.constant.FilePaths;
+import technocredits.technoapp.base.BrowserActions;
 import technocredits.technoapp.pages.*;
 import technocredits.technoapp.utility.DateTimeUtility;
-import technocredits.technoapp.utility.ExcelOperations;
-import technocredits.technoapp.utility.PropertyOperations;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class Tc3 extends TestBase {
+public class Tc3 {
 
-    PropertyOperations configProperty = new PropertyOperations(FilePaths.CONFIG_FILE_PATH);
-
-
-//    @BeforeMethod
-//    public void setup() {
-//        BrowserActions.start(configProperty.getValue("URL"));
-//        LoginPage loginPage = new LoginPage();
-//        loginPage.doLogin();
-//    }
-
-    @DataProvider(name = "testData")
-    public Object[][] getData() throws IOException {
-        List<Map<String, String>> data = ExcelOperations.readExcel(FilePaths.TEST_DATA_EXCEL_FILE_PATH, "Sheet1");
-        Object objData[][] = new Object[data.size()][1];
-
-        for (int i = 0; i < data.size(); i++)
-            objData[i][0] = data.get(i);
-
-        return objData;
+    @BeforeMethod
+    public void setup(){
+        BrowserActions.start("http://34.66.197.232/#/access");
+        LoginPage loginPage = new LoginPage();
+        loginPage.doLogin();
     }
 
-    @Test(dataProvider = "testData")
-    public void verifyPlaceOrderFeature(Map<String, String> data) {
+    @Test
+    public void verifyPlaceOrderFeature(){
         FindFoodPage findFoodPage = new FindFoodPage();
         findFoodPage.waitForPageLoad();
 
@@ -64,7 +45,7 @@ public class Tc3 extends TestBase {
         String dish = restauarantMenuPage.getFirstAvailableDish();
 
         System.out.println("STEP - From the restaurant menu, locate the first food item whose Stock value is greater than 0 and increase its quantity by clicking the Qty Up Arrow.");
-        restauarantMenuPage.setQuantityOfGivenDish(dish, 2);
+        restauarantMenuPage.setQuantityOfGivenDish(dish,2);
 
         System.out.println("VERIFY - that the cart Subtotal is greater than 0.");
         String subTotalText = restauarantMenuPage.getSubTotal();
@@ -109,9 +90,9 @@ public class Tc3 extends TestBase {
         System.out.println("STEP - Click on Pay & Place Order");
         paymentPage.clickOnPayPlaceOrderBtn();
 
-        System.out.println("VERIFY - Confirm the UPI ID error notification displayed");
-        boolean upiFlag = paymentPage.isUPIIdErrorNotificationDisplayed();
-        Assert.assertTrue(upiFlag);
+         System.out.println("VERIFY - Confirm the UPI ID error notification displayed");
+         boolean upiFlag = paymentPage.isUPIIdErrorNotificationDisplayed();
+         Assert.assertTrue(upiFlag);
 
         System.out.println("STEP - Enter a valid UPI ID in the payment field.");
         paymentPage.setUPIId("mkanani@okhdfcbank");
@@ -134,7 +115,7 @@ public class Tc3 extends TestBase {
 
         System.out.println("VERFIY - Amount Paid");
         String orderSummaryPage_amountPaid = orderSuccessPage.getAmtPaid();
-        softAssert.assertEquals(orderSummaryPage_amountPaid, paymentSummaryTotalPayableAmt);
+        softAssert.assertEquals(orderSummaryPage_amountPaid,paymentSummaryTotalPayableAmt);
 
         System.out.println("VERIFY - Order id format is as expected");
         String orderSummaryPage_orderId = orderSuccessPage.getOrderNumber();
@@ -164,7 +145,7 @@ public class Tc3 extends TestBase {
 
         System.out.println("VERIFY - food deliver status and respective message");
         boolean isOrderDeliveredFlag = orderTrackSummaryPage.isOrderDelivered();
-        boolean isOrderDeliverTextFlag = orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
+        boolean isOrderDeliverTextFlag =  orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
         System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
         System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
         Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
@@ -174,31 +155,9 @@ public class Tc3 extends TestBase {
 
         System.out.println("VERIFY - food deliver status and respective message");
         isOrderDeliveredFlag = orderTrackSummaryPage.isOrderDelivered();
-        isOrderDeliverTextFlag = orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
+        isOrderDeliverTextFlag =  orderTrackSummaryPage.isEnjoyYourMeanTextPresent();
         System.out.println("Order delivered status present : " + isOrderDeliveredFlag);
         System.out.println("Order deliver text present : " + isOrderDeliverTextFlag);
         Assert.assertEquals(isOrderDeliveredFlag, isOrderDeliverTextFlag);
     }
-
-//    @AfterMethod
-//    public void tearDown(ITestResult result) {
-//        String methodName = result.getMethod().getMethodName();
-//        System.out.println("Method Name : " + result.getMethod().getMethodName());
-//        System.out.println("Test Execution Start : " + result.getStartMillis());
-//
-//        System.out.println("Test Execution End : " + result.getEndMillis());
-//
-//        if (result.getStatus() == ITestResult.FAILURE) {
-//            System.out.println("Test case failed..!");
-//            BrowserActions.takeScreenshot(methodName + "_failed_method");
-//        }
-//
-////        if (result.isSuccess()) {
-////            System.out.println("Test Execution Done Properly");
-////        } else {
-////            System.out.println("Test Execution Closed unexpectedly");
-////        }
-//
-//        System.out.println("Execution Done...!");
-//    }
 }
