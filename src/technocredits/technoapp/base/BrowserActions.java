@@ -66,6 +66,7 @@ public class BrowserActions {
         WebElement e = getElement(by,isWaitRequired);
         wait.until(ExpectedConditions.elementToBeClickable(e));
         e.click();
+
     }
 
     protected void setText(WebElement e, String text, boolean isWaitRequired){
