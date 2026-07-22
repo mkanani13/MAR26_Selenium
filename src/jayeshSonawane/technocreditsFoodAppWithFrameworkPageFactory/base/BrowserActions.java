@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 //import technocredits.customexception.BrowserInvalidException;
 
@@ -55,13 +56,170 @@ public class BrowserActions {
         return driver;
     }
 
-    public static void visibilityOfElementLocated(By by){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    // wait till element located
+    public WebElement visibilityOfElementLocated(By by){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    public static String visibilityOfElementLocatedText(By by){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(by)).getText();
+    // wait for number of windows to be
+    public void waitForNumberOfWindowsToBe(int count){
+        wait.until(ExpectedConditions.numberOfWindowsToBe(count));
     }
+
+    // Find Element
+    private WebElement getElement(By by, boolean isWaitRequired){
+        if(isWaitRequired){
+            return visibilityOfElementLocated(by);
+        }
+        return driver.findElement(by);
+    }
+
+    // get page title
+    protected String getPageTitle(){
+        return driver.getTitle();
+    }
+
+    // send keys
+    protected void sendKeysToElement(By by, String text, boolean isWaitRequired){
+        WebElement e = getElement(by, isWaitRequired);
+        e.sendKeys(text);
+    }
+
+    protected void sendKeysToElement(WebElement element, String value, boolean isWaitRequired){
+        if(isWaitRequired){
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }
+        element.sendKeys(value);
+    }
+
+    // Click
+    protected void clickOnElement(By by, boolean isWaitRequired){
+        WebElement e = getElement(by, isWaitRequired);
+        wait.until(ExpectedConditions.elementToBeClickable(e));
+        e.click();
+    }
+
+    protected void clickOnElement(WebElement element,  boolean isWaitRequired){
+        if(isWaitRequired){
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        }
+        element.click();
+    }
+
+    // get Element Text
+    protected String getElementText(By by, boolean isWaitRequired){
+        WebElement e = getElement(by, isWaitRequired);
+        return e.getText();
+    }
+
+    protected String getElementText(WebElement element, boolean isWaitRequired){
+        if(isWaitRequired){
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }
+        return element.getText();
+    }
+
+    // select Dropdown value and retrieve the text
+    protected String selectDropdownElementByVisibleText(WebElement element, String value){
+        Select select = new Select(element);
+        select.selectByVisibleText(value);
+        return select.getFirstSelectedOption().getText();
+    }
+
+    // select Dropdown value and retrieve the text
+    protected String selectDropdownElementByValue(WebElement element, String value){
+        Select select = new Select(element);
+        select.selectByValue(value);
+        return select.getFirstSelectedOption().getText();
+    }
+
+    // arrow keys up
+    protected void sendKeysArrowUp(int quantity){
+        for (int count = 0; count<quantity; count++){
+            actions.sendKeys(Keys.ARROW_UP).perform();
+        }
+    }
+
+    // arrow keys down
+    protected void sendKeysArrowDown(int quantity){
+        for (int count = 0; count<quantity; count++){
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+        }
+    }
+
+    // get attribute value
+    protected int getAttributeValue(WebElement element, String attributeName){
+        return Integer.parseInt(element.getAttribute(attributeName));
+    }
+
+    // is element displayed
+    protected boolean isElementDisplayed(By by, boolean isWaitRequired){
+        WebElement e = getElement(by, isWaitRequired);
+        return e.isDisplayed();
+    }
+
+    protected boolean isElementDisplayed(WebElement element, boolean isWaitRequired){
+        if(isWaitRequired){
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }
+        return element.isDisplayed();
+    }
+
+    // is element enabled
+    protected boolean isElementEnabled(By by, boolean isWaitRequired){
+        WebElement e = getElement(by, isWaitRequired);
+        return e.isEnabled();
+    }
+
+    protected boolean isElementEnabled(WebElement element, boolean isWaitRequired){
+        if(isWaitRequired){
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }
+        return element.isEnabled();
+    }
+
+    // get Page ID
+    protected String getPageId(){
+        return driver.getWindowHandle();
+    }
+
+    // get All Page IDs
+    protected Set<String> getAllPageIds() {
+        return driver.getWindowHandles();
+    }
+
+    // switch to window
+    protected void switchToWindow(String id){
+        driver.switchTo().window(id);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public static String visibilityOfElementLocatedText(By by){
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated(by)).getText();
+//    }
 
     public static JavascriptExecutor scrollTo(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -87,7 +245,7 @@ public class BrowserActions {
         TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
         File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(srcFile, new File("src/jayeshSonawane/technocreditsFoodAppWithFramework/screenshots/"+fileName+".png"));
+            FileUtils.copyFile(srcFile, new File("src/jayeshSonawane/technocreditsFoodAppWithFrameworkPageFactory/screenshots/"+fileName+".png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

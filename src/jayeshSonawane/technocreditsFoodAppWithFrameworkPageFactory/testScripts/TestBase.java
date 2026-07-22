@@ -1,17 +1,17 @@
 package jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.testScripts;
 
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.base.BrowserActions;
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.pages.AccessPage;
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.pages.ChooseApplicationPage;
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.pages.SignInPage;
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.utility.PropertyOperations;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.base.BrowserActions;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.pages.AccessPage;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.pages.ChooseApplicationPage;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.pages.SignInPage;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.utility.PropertyOperations;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
 
-    PropertyOperations propertyOperations = new PropertyOperations("src/jayeshSonawane/technocreditsFoodAppWithFramework/config/config.properties");
+    PropertyOperations propertyOperations = new PropertyOperations("src/jayeshSonawane/technocreditsFoodAppWithFrameworkPageFactory/config/config.properties");
 
     @BeforeMethod
     public void setup(){

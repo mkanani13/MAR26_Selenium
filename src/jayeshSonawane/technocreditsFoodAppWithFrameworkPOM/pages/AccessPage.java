@@ -11,7 +11,7 @@ public class AccessPage extends BrowserActions {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-testid='access-submit-btn']")));
     }
 
-    public String continueToLogin(String studentId, String accessCode){
+    public void continueToLogin(String studentId, String accessCode){
         System.out.println("STEP - Enter Student ID");
         WebElement elStduentID = driver.findElement(By.id("access-student-id"));
         elStduentID.sendKeys(studentId);
@@ -24,7 +24,5 @@ public class AccessPage extends BrowserActions {
         System.out.println("STEP - Click on Continue Button");
         WebElement elContinueButton = driver.findElement(By.xpath("//button[@data-testid='access-submit-btn']"));
         elContinueButton.click();
-
-        return "";
     }
 }

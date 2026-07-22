@@ -56,7 +56,7 @@ public class Assignment19_TC3 extends TestBase{
         findFoodMenuPage.waitForPageLoad();
         findFoodMenuPage.addInStockItemIntoCart(1);
         System.out.println("STEP - Select Coupon");
-        String couponCode = "DISCOUNT20";
+        String couponCode = "PUNE50";
         findFoodMenuPage.selectCoupon(couponCode);
         double subTotalFindFoodMenuPage = findFoodMenuPage.getSubTotal();
         double discountFindFoodMenuPage = findFoodMenuPage.getDiscount();
@@ -114,11 +114,11 @@ public class Assignment19_TC3 extends TestBase{
             findFoodPaymentPage.enterUpiId(upiId);
         } else if (paymentMethod.equalsIgnoreCase("Card")) {
             findFoodPaymentPage.clickPaymentMethodCard();
-            Assert.assertTrue(findFoodPaymentPage.paymentMethodCardEnabled(), "Card Payment Method Not Available");
+            Assert.assertTrue(findFoodPaymentPage.isPaymentMethodCardEnabled(), "Card Payment Method Not Available");
             // Write card steps
         } else if (paymentMethod.equalsIgnoreCase("Net Banking")) {
             findFoodPaymentPage.clickPaymentMethodNetBanking();
-            Assert.assertTrue(findFoodPaymentPage.paymentMethodNetBankingEnabled(), "Net Banking Payment Method Not Available");
+            Assert.assertTrue(findFoodPaymentPage.isPaymentMethodNetBankingEnabled(), "Net Banking Payment Method Not Available");
             // Write Net Banking Steps
         }
         findFoodPaymentPage.clickOnPlaceOrderButton();

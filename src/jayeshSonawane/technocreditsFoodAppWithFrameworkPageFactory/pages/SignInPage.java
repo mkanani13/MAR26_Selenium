@@ -1,6 +1,6 @@
 package jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.pages;
 
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.base.BrowserActions;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.base.BrowserActions;
 import org.openqa.selenium.By;
 
 public class SignInPage extends BrowserActions {
@@ -8,7 +8,7 @@ public class SignInPage extends BrowserActions {
     public final String LOGINBUTTONXPATH = "//button[@data-testid='login-submit-btn']";
 
     public void waitForPageLoad(){
-        BrowserActions.visibilityOfElementLocated(By.xpath(LOGINBUTTONXPATH));
+        visibilityOfElementLocated(By.xpath(LOGINBUTTONXPATH));
     }
 
     public void doSignIn(String email, String password){

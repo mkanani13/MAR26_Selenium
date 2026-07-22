@@ -34,7 +34,9 @@ public class FindFoodPaymentPage extends BrowserActions {
     }
 
     public boolean isCaptchaErrorDisplayed(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='fd-toast-error']"))).isDisplayed();
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='fd-toast-error']"))).isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("err-pay-captcha"))).isDisplayed();
+
     }
 
     public void clickCaptcha(){
@@ -42,7 +44,8 @@ public class FindFoodPaymentPage extends BrowserActions {
     }
 
     public boolean isUpiErrorDisplayed(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='fd-toast-error']"))).isDisplayed();
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='fd-toast-error']"))).isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("upi-err"))).isDisplayed();
     }
 
     public void enterUpiId(String upiId){
@@ -57,7 +60,7 @@ public class FindFoodPaymentPage extends BrowserActions {
         driver.findElement(By.xpath("//div[@id='payment-host']//button[text()='Card']")).click();
     }
 
-    public boolean paymentMethodCardEnabled(){
+    public boolean isPaymentMethodCardEnabled(){
         return driver.findElement(By.xpath("//div[@id='payment-host']//button[text()='Card']")).isEnabled();
     }
 
@@ -65,7 +68,7 @@ public class FindFoodPaymentPage extends BrowserActions {
         driver.findElement(By.xpath("//div[@id='payment-host']//button[text()='Net Banking']")).click();
     }
 
-    public boolean paymentMethodNetBankingEnabled(){
+    public boolean isPaymentMethodNetBankingEnabled(){
         return driver.findElement(By.xpath("//div[@id='payment-host']//button[text()='Net Banking']")).isEnabled();
     }
 

@@ -1,7 +1,6 @@
 package jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.testScripts;
 
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.pages.*;
-import jayeshSonawane.technocreditsFoodAppWithFrameworkPOM.testScripts.TestBase;
+import jayeshSonawane.technocreditsFoodAppWithFrameworkPageFactory.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -36,7 +35,7 @@ public class Assignment19_TC3 extends TestBase {
         System.out.println("STEP - Verify that the logged-in user's name is displayed in the top navigation bar.");
         MyProfilePage myProfilePage = new MyProfilePage();
         myProfilePage.clickOnMyProfilePage();
-        myProfilePage.waitforPageLoad();
+        myProfilePage.waitForPageLoad();
         String expectedUserName = myProfilePage.getUserName();
 
         findFoodPage.clickOnFindFoodPage();
